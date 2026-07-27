@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jewish Venice — a traveller's guide</title>
+<meta name="description" content="A practical and historical guide to Venice for Jewish travellers: a one-day itinerary with history for every stop, the Ghetto and its five synagogues, verified kosher listings, and a Shabbat guide.">
+<meta property="og:title" content="Jewish Venice — a traveller's guide">
+<meta property="og:description" content="Itinerary, history, kosher food, Shabbat logistics and the Ghetto — sourced and honestly labelled.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕍</text></svg>">
+<link rel="stylesheet" href="assets/vendor/leaflet.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <span class="stamp">Venezia · יהדות ונציה</span>
+    <div class="brand">
+      <h1>Jewish Venice</h1>
+      <span class="heb">ונציה</span>
+    </div>
+    <p class="tagline">A one-day itinerary with real history at every stop — plus the Ghetto that gave the world the word,
+      the five hidden synagogues, every supervised kosher table in the city, and what you actually need to know to keep Shabbat here.</p>
+    <nav class="tabs" role="tablist">
+      <div class="tabrow">
+        <button role="tab" data-tab="itinerary" aria-selected="true"><span class="ico">🗺️</span>The Day</button>
+        <button role="tab" data-tab="history" aria-selected="false"><span class="ico">📜</span>Jewish Venice</button>
+        <button role="tab" data-tab="ghetto" aria-selected="false"><span class="ico">🕍</span>Ghetto &amp; Synagogues</button>
+        <button role="tab" data-tab="food" aria-selected="false"><span class="ico">🍽️</span>Kosher Food</button>
+        <button role="tab" data-tab="shabbat" aria-selected="false"><span class="ico">🕯️</span>Shabbat</button>
+        <button role="tab" data-tab="practical" aria-selected="false"><span class="ico">🧭</span>Practical</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+<!-- ==================== ITINERARY ==================== -->
+<section class="panel active" id="tab-itinerary">
+  <p class="lede">One day on foot and by vaporetto, starting and ending in Cannaregio. Every stop links to Google Maps,
+    every leg links to directions, and <b>every major stop opens into a full history</b> — including an honest note on whether
+    it has a Jewish connection, and when it doesn't.</p>
+
+  <h2 class="sec">The route</h2>
+  <div id="map-itin" class="mapbox"></div>
+  <div class="legend">
+    <span><i class="lw"></i>Walking leg</span>
+    <span><i class="lb"></i>Vaporetto leg</span>
+    <span><span class="dot"></span>Stop — click any pin</span>
+  </div>
+  <div class="actions" style="margin-top:14px">
+    <a class="btn pri" id="rt1" target="_blank" rel="noopener" href="#">Morning route in Google Maps</a>
+    <a class="btn" id="rt2" target="_blank" rel="noopener" href="#">Afternoon route in Google Maps</a>
+    <button class="btn" id="expandAll">Expand all histories</button>
+  </div>
+
+  <h2 class="sec">Full schedule</h2>
+  <div class="tablecard">
+    <table class="itin">
+      <thead><tr><th style="width:104px">Time</th><th>Stop / leg</th><th style="width:100px">Distance</th><th style="width:118px">Travel</th></tr></thead>
+      <tbody id="itin-body"></tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <b>Two things to know about this map.</b>
+    <ul>
+      <li><b>Walking lines are straight-line links, not turn-by-turn paths.</b> Venice's lanes zigzag around canals, so the real walking distances match the table, not the drawn line. Use the per-leg directions link for the actual route.</li>
+      <li><b>The Airbnb pin is an estimate.</b> Landmark links search Google Maps by name and land exactly; the apartment link searches the street address. Check the marker against your booking.</li>
+    </ul>
+  </div>
+
+  <div class="note gold">
+    <b>Want to make this a Jewish day?</b> The Ghetto is a <b>six-to-eight minute walk from the San Marcuola pier</b> —
+    the shortest walk to it from any Grand Canal landing. Swapping the 13:15 bookshop slot for the Ghetto, or adding it before
+    the 9:40 boat, costs you very little. See the <a href="#" data-goto="ghetto">Ghetto &amp; Synagogues</a> tab for a self-guided route.
+  </div>
+</section>
+
+<!-- ==================== HISTORY ==================== -->
+<section class="panel" id="tab-history">
+  <p class="lede">Venice did not invent Jewish segregation. It invented the word for it — and then, for two and a half centuries,
+    ran the most sophisticated, most lucrative and most closely reasoned system of tolerated confinement in Europe.</p>
+
+  <h2 class="sec">The decree</h2>
+  <p>On <b>20 March 1516</b> the patrician <b>Zaccaria Dolfin</b> proposed in the Collegio confining the Jews to an island
+    "similar to a fortress." On <b>29 March 1516</b>, under Doge Leonardo Loredan, <b>the Senate voted it through 130 to 44</b>:
+    all Jews present and future were to move at once to dwell together in the houses within the <em>Geto</em> at San Hieronimo.</p>
+  <p>The trigger was the War of the League of Cambrai. After the defeat at Agnadello in 1509, mainland Jews had fled into the city,
+    where previously they could stay only about a fortnight at a time. Venice had a choice between expelling them and absorbing them.
+    <b>It chose neither. It chose enclosure: keep the money and the medicine, control the bodies.</b></p>
+
+  <div class="note gold">
+    <b>The word itself.</b> Scholars favour the foundry derivation, from Italian <em>gettare</em>, to pour or cast.
+    <b>Benjamin Ravid</b>, the leading specialist, puts it carefully: "The word 'ghetto' initially referred to the copper foundry
+    of the Venetian government, <em>il ghetto</em>… where cannon balls were cast." The site had been called <em>geto</em>
+    since at least the early 14th century, with twelve to fourteen furnaces. The foundries stopped working around 1400,
+    the island was acquired in 1455 and built up with some twenty-five houses between 1459 and 1465 —
+    <b>so it had been ordinary housing for sixty years before 1516.</b>
+    <p style="margin-top:9px">Competing etymologies exist (Hebrew <em>get</em>; <em>borghetto</em>; German <em>gehegt</em>) and the OED
+    still calls the origin uncertain. The hard-<em>g</em> theory — that Venetian <em>geto</em> has a soft <em>g</em>, and German-speaking
+    Ashkenazi residents hardened it — is the standard explanation for the spelling, but it is <b>commonly explained rather than documented</b>.</p>
+  </div>
+
+  <h2 class="sec">The regime</h2>
+  <div class="grid2">
+    <div class="factbox">
+      <h4 class="min">The gates</h4>
+      <p><b>Two gates</b> into the Ghetto Nuovo, at its two bridges — the only ways in — and after 1541 one more into the Ghetto Vecchio.
+        Locked in the evening, opened at dawn with the <em>marangona</em>, the great bell of the Campanile in Piazza San Marco.
+        All quays and canal-facing doors and windows were bricked up.</p>
+    </div>
+    <div class="factbox">
+      <h4 class="min">Who paid for the guards</h4>
+      <p><b>The prisoners did.</b> Four Christian sentries at the gates and two boats patrolling the canals at night — all salaried
+        by the Jewish community itself. Rent inside was fixed by statute at <b>one third above market rate, in perpetuity.</b></p>
+    </div>
+    <div class="factbox">
+      <h4 class="min">Why the buildings are so tall</h4>
+      <p>Forbidden to expand outward, the community built upward. Sources give six, seven, eight — and in 18th-century land registers
+        <b>nine storeys</b>, with ceilings squeezed absurdly low. Italian sources call the heights unique in Venice.
+        <b>Stand in the campo and count the window rows.</b></p>
+    </div>
+    <div class="factbox">
+      <h4 class="min">The badge</h4>
+      <p>A <b>yellow circle from 1394</b>, descending from the Fourth Lateran Council of 1215; extended to women in 1443;
+        <b>replaced in 1496 by a yellow hat</b>, because a badge could be hidden and a hat could not; then a red hat, commonly dated 1500 —
+        though Encyclopaedia Judaica says explicitly that the reason and date are undocumented. Levantine Jews kept yellow.
+        A few bankers and eminent physicians held the "black hat privilege."</p>
+    </div>
+  </div>
+
+  <h3 class="sub">Three ghettos, and a name that runs backwards</h3>
+  <p><b>Ghetto Nuovo, 1516</b>, for Ashkenazi and Italian Jews. <b>Ghetto Vecchio, 1541</b>, opened for Levantine merchants.
+    <b>Ghetto Novissimo, 1633</b>, two small <em>calli</em> of about twenty dwellings for wealthy Ponentine merchants, with no synagogue of its own.
+    <b>The paradox is worth pointing out on site: the "new" ghetto is the older Jewish settlement, because the names describe the age of the foundries, not of the Jews.</b></p>
+
+  <h2 class="sec">The banks — a compulsion, not a privilege</h2>
+  <p>Residence was licensed by <em>condotte</em>, renewable charters. <b>The price was the pawnshops.</b>
+    The <em>banchi rosso, verde and nero</em>, named for the colour of their receipts, stood on the ground floors of three different sides
+    of the Campo del Ghetto Nuovo. <b>The bankers could not refuse or postpone a loan for any reason</b>, and lent at state-fixed rates —
+    Simone Luzzatto's <em>Discorso</em> of 1638 records five per cent a year, serving in his words "the needs and emergencies of the poorest unfortunates."
+    <b>Losses were routine.</b> A Christian supervisor was imposed in 1677. The three banks survived until 1797.</p>
+  <div class="note">
+    <b>Venice never built a public pawn-bank until 1806. It compelled the Jews to be one instead.</b>
+    Other Italian cities founded a <em>Monte di Pietà</em>. Venice extracted the same service from a community it confined,
+    at capped interest, at a deliberate loss, as a form of taxation. That is the single most important thing to understand
+    about the economics of the Ghetto — and it is the exact inverse of the Shylock story.
+  </div>
+  <p class="quote">Two banking systems, five minutes' walk apart, on opposite sides of the law. On the Grand Canal, Christian Venice ran
+    international merchant banking out of palaces it owned. Half a kilometre inland, a community legally forbidden to own property
+    ran compulsory pawnshops it was not allowed to close.</p>
+
+  <h2 class="sec">The people</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Leon Modena</h3>
+      <p class="sub">1571–1648 · rabbi, preacher, cantor</p>
+      <p>Venetian-born, and in the Ghetto for over forty years. He wrote the <em>Historia de' riti hebraici</em>, an explanation of Judaism
+        for Christian readers; <em>Ari Nohem</em>, arguing that the Zohar was a modern forgery; and the extraordinarily candid Hebrew
+        autobiography <em>Ḥayyei Yehudah</em>, in which he confesses to being <b>a compulsive gambler</b> — having, at thirteen, written a
+        dialogue <em>against</em> gambling. Christian nobles packed his Italian sermons.</p>
+    </div>
+    <div class="card">
+      <h3>Sara Copia Sullam</h3>
+      <p class="sub">c. 1592–1641 · poet</p>
+      <p>She ran a literary salon in the Ghetto that drew men of letters from Treviso, Padua and Vicenza. From 1618 she corresponded
+        for four years with the Genoese poet <b>Ansaldo Cebà, whom she never met and who spent the entire correspondence trying to convert her.</b>
+        He published fifty-three of his letters in 1623; hers are lost. In 1621 Baldassare Bonifaccio publicly accused her of denying
+        the immortality of the soul, and <b>she answered with her own <em>Manifesto</em> the same year.</b></p>
+    </div>
+    <div class="card">
+      <h3>Daniel Bomberg</h3>
+      <p class="sub">d. c. 1549 · printer, and a Christian</p>
+      <p>An Antwerp Christian who ran a Hebrew press in Venice from 1515 to 1548 and produced the <b>first complete printed Babylonian
+        Talmud, 1519/20–1523</b>. <b>His foliation and page layout — text in the centre, Rashi inside, Tosafot outside — remain the standard
+        in every conventional edition printed since.</b> Every daf yomi shiur in the world opens a page laid out in Venice.
+        <em>He is not buried in the Lido cemetery; no burial place is recorded.</em></p>
+    </div>
+    <div class="card">
+      <h3>Simone Luzzatto</h3>
+      <p class="sub">c. 1583–1663 · rabbi and economist</p>
+      <p>His <em>Discorso circa il stato de gl'Hebrei</em> (1638) argued the Jews' economic usefulness to Venice in terms the Senate could
+        act on. Its influence on Menasseh ben Israel's petition to Cromwell is attested, though direct textual dependence is debated.
+        It is one of the founding documents of the European argument for emancipation — <b>written by a man who had to be indoors by nightfall.</b></p>
+    </div>
+  </div>
+
+  <h2 class="sec">Six things you will not read on the plaque</h2>
+  <ol>
+    <li><b>The prisoners paid the wages of their own gaolers.</b> Four Christian sentries at the gates, two boats on the canals at night — funded by the Jews they confined.</li>
+    <li><b>Venice compelled the Jews to be its pawn-bank</b> for two centuries rather than found one itself, at state-fixed rates, with no right to refuse a loan, running at a deliberate loss.</li>
+    <li><b>The 1704 stone in the Ghetto Vecchio forbids converts from going home</b> — under penalty of the rope, the galleys and the pillory, enforced by an anonymous denunciation box with a hundred-ducat bounty paid out of the accused's own property. The stone <em>is</em> the sentence ordering that it be carved.</li>
+    <li><b>Every Talmud printed since 1523 follows a pagination set in Venice by a Christian from Antwerp.</b></li>
+    <li><b>The locked ghetto was one of the most visited places in Venice.</b> Christian nobles hired guides to tour it and packed Leon Modena's sermons; the Simchat Torah concert of October 1628 in the Spanish Synagogue needed police crowd control. The music academy that gave it was called <em>the Hindered</em>.</li>
+    <li><b>In July 2016, in the campo where the gates were burned in 1797, five actors played Shylock in six sold-out performances</b> — and days earlier Ruth Bader Ginsburg, sitting in judgment, annulled his forced conversion and ordered his property restored.</li>
+  </ol>
+
+  <h2 class="sec">A timeline</h2>
+  <div class="timeline" id="timeline"></div>
+
+  <div class="note warn">
+    <b>Where historians genuinely disagree.</b> This page flags contested points rather than smoothing them over.
+    The <em>geto</em> etymology is not settled. The peak Ghetto population is given anywhere between about 3,000 and 5,000
+    (most commonly c. 4,800 in 1655). Deportation counts range from 205 to 289 depending on which territory is included —
+    <b>246 is the community's own figure, and the number carved on the memorial.</b> The Longhena attributions for the
+    Levantina and Spagnola are traditional, not documented. Where a date or number here looks suspiciously precise, assume
+    it has been checked; where it is hedged, the hedge is deliberate.
+  </div>
+</section>
+
+<!-- ==================== GHETTO ==================== -->
+<section class="panel" id="tab-ghetto">
+  <p class="lede">A self-guided walk through Jewish Venice — the campo, the memorial, the five scole and the way in.
+    Everything here except the Lido cemetery sits within about three hundred metres.</p>
+
+  <div class="note stop">
+    <b>Read this before you go.</b> The synagogues are <b>not walk-in</b>. Access to services and to the scole must be
+    arranged in advance, and the community requires <b>PDF scans of a valid ID or passport for every member of your party</b>,
+    sent to <a href="mailto:security@jvenice.org">security@jvenice.org</a> or WhatsApp
+    <a href="https://wa.me/393286457585" target="_blank" rel="noopener">+39 328 645 7585</a>.
+    Turning up on Friday night without prior clearance is a realistic way to not get in. Bring the physical passport with you.
+  </div>
+
+  <div id="map-ghetto" class="mapbox short"></div>
+  <div class="legend"><span><span class="dot" style="background:#6b2d5b;box-shadow:0 0 0 1px #6b2d5b"></span>Jewish site — click any pin</span></div>
+
+  <h2 class="sec">The sites</h2>
+  <div id="jsites"></div>
+
+  <h2 class="sec">Visiting the synagogues</h2>
+  <p>The only way inside the scole is the <b>guided tour</b> run from the Museo Ebraico by Opera Laboratori.
+    Tours are €15 full / €13 reduced, hourly in English from 10:00 (last tour 17:00), Italian from 10:30.
+    <b>Private tours are available in Hebrew</b>, daily except Saturday.</p>
+  <div class="note warn">
+    <b>The museum is mid-restoration.</b> The permanent display is not open; it operates from a temporary location, and the
+    guided tour is the reason to book. The ticketing operator and the museum's own website publish
+    <b>different opening hours and disagree about which synagogues the tour covers</b>. Trust
+    <a href="https://www.ghettovenezia.com/en/opening-hours/" target="_blank" rel="noopener">ghettovenezia.com</a>, and phone
+    <a href="tel:+39041715359">+39 041 715359</a> before you go. <b>No reopening date is quoted here because the museum does not give one.</b>
+  </div>
+</section>
+
+<!-- ==================== FOOD ==================== -->
+<section class="panel" id="tab-food">
+  <p class="lede">Venice's supervised kosher scene is <b>four establishments and one guesthouse, all within about two hundred metres
+    of each other in the Cannaregio Ghetto</b>. That is the whole list. Here it is, with what is verified and what is not.</p>
+
+  <div class="note stop">
+    <b>Four corrections to what is widely published.</b>
+    <ul>
+      <li><b>Ghimel Garden is permanently closed.</b> Venice now has <b>no supervised dairy restaurant</b> — only a dairy café.
+        Ba'Ghetto occupies its old address with a <b>meat</b> kitchen.</li>
+      <li><b>"Kosher Garden Bar" is a stale duplicate listing</b> of Ba'Ghetto, still ranking on TripAdvisor with no reviews since 2018.</li>
+      <li><b>The community mikveh is currently suspended</b> for maintenance.</li>
+      <li>Two widely-read guides list <b>ordinary non-kosher Venetian seafood restaurants as kosher.</b> See the warning at the foot of this page.</li>
+    </ul>
+  </div>
+
+  <div class="note gold">
+    <b>Two authorities, and they do not certify the same places.</b> The <b>Comunità Ebraica di Venezia</b>, under Chief Rabbi
+    Alberto Sermoneta, publishes a list containing exactly three establishments: Rimon Place, Ba'Ghetto and Panificio Volpe.
+    <b>Gam Gam is not on it</b> — Gam Gam and Gam Gam Goodies operate under <b>Chabad/Lubavitch hashgacha</b>.
+    <p style="margin-top:9px">This is not a scandal; it is the normal Italian pattern, where Chabad runs its own hashgacha in parallel
+    with the communal rabbinate. Both are serious. But <b>"certified in Venice" means two different things depending on which
+    restaurant you are standing in</b> — decide in advance which authority you rely on, rather than discovering the split on Friday afternoon.</p>
+  </div>
+
+  <div id="map-food" class="mapbox short"></div>
+  <div class="legend"><span><span class="dot" style="background:#0e6b73;box-shadow:0 0 0 1px #0e6b73"></span>Kosher establishment or Jewish service</span></div>
+
+  <h2 class="sec">Supervised kosher</h2>
+  <div class="cards" id="food-open"></div>
+
+  <h2 class="sec">Closed, or not what the listing says</h2>
+  <div class="cards" id="food-closed"></div>
+
+  <h2 class="sec">Provisioning for Shabbat</h2>
+  <table class="plain">
+    <thead><tr><th>What you need</th><th>Where</th></tr></thead>
+    <tbody>
+      <tr><td>Challah, pareve cakes, salami, Halav Yisrael items, pat Yisrael</td><td><b>Panificio Volpe Giovanni</b>, Cannaregio 1143</td></tr>
+      <tr><td>Coffee, pizza, sandwiches, pastries, gelato, wine</td><td><b>Gam Gam Goodies</b> (address conflict — see card)</td></tr>
+      <tr><td>Shabbat meals delivered to your hotel or apartment</td><td><b>Gam Gam Shabbat takeaway</b>, delivers across Venice</td></tr>
+      <tr><td>Pre-paid communal Shabbat meals</td><td><b>Chabad</b>, booked at jewishvenice.org</td></tr>
+      <tr><td>Shabbat meals at a restaurant table</td><td><b>Ba'Ghetto</b> — advance booking required</td></tr>
+    </tbody>
+  </table>
+  <div class="note warn">
+    <b>There is no kosher supermarket in Venice</b>, and no dedicated kosher wine shop was found — both restaurants serve kosher wine,
+    and Gam Gam Goodies sells it, but <b>consider bringing wine or buying in Milan or Rome.</b> The Jewish Community's own kosher page
+    is the authoritative index, and it is short: one accommodation, one restaurant, one bakery.
+    <p style="margin-top:9px"><b>Nothing kosher was found on the Lido, in Mestre or in Marghera.</b> Treat that as "none found" rather than
+    "none exists" — that search was not exhaustive.</p>
+  </div>
+
+  <h2 class="sec">Fallbacks — and a warning about the guides</h2>
+  <p>Venice's fallback landscape is genuinely poor. The local cuisine is overwhelmingly shellfish-based, and no dedicated vegan
+    restaurant was found near the Ghetto. The realistic advice is to <b>self-cater from Panificio Volpe plus a regular supermarket
+    for sealed hechshered products and produce</b>, and to book Chabad or Ba'Ghetto ahead.</p>
+  <div class="note stop">
+    <b>Three popular guides are actively misleading. Do not rely on them.</b>
+    <ul>
+      <li><b>Eating Europe's "A Local's Guide to Kosher Dining in Venice"</b> (March 2026) lists <b>Hostaria Al Vecio Bragosso</b>
+        as "kosher seafood" that "maintains kosher compliance." <b>It is a conventional Venetian seafood restaurant. It is not kosher.</b></li>
+      <li><b>Hotel Giardinetto's guide</b> lists <b>Ai Quattro Rusteghi</b> among "kosher restaurants." It is a regular,
+        non-supervised restaurant that merely sits in the Ghetto square.</li>
+      <li><b>Easy Kosher Travel</b> still lists the permanently-closed Ghimel Garden as open, and contains a garbled reference to a
+        nonexistent restaurant — evidence of machine generation. Cross-check anything from it.</li>
+    </ul>
+    <p style="margin-top:9px"><b>Look for the physical teudah on the wall</b>, check its date and the name of the certifying rabbi.
+    That is worth more than any website, including this one.</p>
+  </div>
+</section>
+
+<!-- ==================== SHABBAT ==================== -->
+<section class="panel" id="tab-shabbat">
+  <p class="lede">Venice is unusually good for Shabbat in one respect and unusually awkward in another.
+    It has a real, municipally-agreed eruv with no wires at all — and it can vanish overnight under high water.</p>
+
+  <h2 class="sec">Three things to do before you book</h2>
+  <ol>
+    <li><b>Email <a href="mailto:security@jvenice.org">security@jvenice.org</a> with passport scans</b> for everyone in your party,
+      and ask for service times for your specific dates. Nothing else here matters if you cannot get into the shul.</li>
+    <li><b>Phone Gam Gam on <a href="tel:+393662504505">+39 366 250 4505</a></b> to book Shabbat meals — and because this is,
+      in practice, the reliable route to Chabad.</li>
+    <li><b>If you need the mikveh, confirm it is operating</b> on <a href="tel:+39041715012">+39 041 715012</a> before you commit to dates.</li>
+  </ol>
+
+  <h2 class="sec">Where services are held</h2>
+  <p>Shabbat and festival services take place at the <b>Scola Spagnola in the summer</b> and the <b>Scola Levantina in the winter</b> —
+    the Levantina's smaller hall could be heated, which is why. The changeover dates are not published; ask the office.
+    The other three scole are heritage spaces and are not in regular liturgical use.</p>
+  <div class="note warn">
+    <b>No service times are published anywhere.</b> The community website carries no Shacharit, Mincha or Maariv timetable — not for
+    weekdays, not for Shabbat. You must ask. And <b>do not assume a weekday minyan</b>: the resident community is small and the published
+    material describes services in terms of "Shabbat and Jewish Holidays" only. If you need to say Kaddish on a weekday, contact both the
+    community and Chabad well in advance, and treat Chabad as the more likely option.
+  </div>
+
+  <h2 class="sec">The eruv — and it is unlike any other</h2>
+  <div class="note ok">
+    <b>Venice has an official eruv, renewed and expanded in April 2026</b> by Mayor Luigi Brugnaro and Chief Rabbi Alberto Sermoneta,
+    at a ceremony that newly brought <b>Sant'Elena</b> — the far eastern tip of the island — inside the boundary. It now covers
+    essentially the whole historic city.
+  </div>
+  <p><b>There is no wire.</b> Venice's eruv is architecturally unique: the boundary is devolved to the canals and the lagoon.
+    As the community puts it, it is "a ritual enclosure whose purpose is that of creating an ideal single public space thanks to a line
+    delimiting the whole area of Venice." <b>You will never see an eruv wire in Venice and should not go looking for one.</b>
+    Rabbi Sermoneta notes that the eruv is announced each year in the synagogue on the eve of Passover, between Mincha and Arvit.</p>
+  <div class="note stop">
+    <b>Acqua alta cancels the eruv. This is not "probably down" — it is down.</b> From the community's own site:
+    <em>"In the event of high water all boundaries disappear, streets and canals becoming a single expanse of water.
+    The eruv, in this case, is erased, and is no longer valid."</em>
+    <p style="margin-top:9px">Acqua alta season runs roughly <b>October through January</b>, peaking November–December, though it can
+    occur outside that window. <b>Check the tide forecast on Friday morning</b>, and ask the community office — remembering that the
+    office closes at 11:00 on Fridays. The eruv map is published at
+    <a href="https://jvenice.org/doc/eruv.pdf" target="_blank" rel="noopener">jvenice.org/doc/eruv.pdf</a>.</p>
+    <p style="margin-top:9px"><b>Assume the Lido and Mestre are outside it</b> — the 2026 renewal mentions only Sant'Elena, and the boundary
+    is formed by the lagoon around the historic city. Confirm rather than assume. And note that because this eruv rests on natural water
+    boundaries and a municipal agreement rather than a maintained physical structure, <b>some poskim outside Italy may not rely on it.</b>
+    It is the formal, public position of the local rabbinate. If you follow a particular posek, ask him.</p>
+  </div>
+
+  <h2 class="sec">Mikveh</h2>
+  <div class="note warn">
+    <b>Currently suspended.</b> The community's religious services page states: <em>"Mikveh services are temporarily suspended due to
+    extraordinary maintenance works."</em> <b>The notice is undated</b>, and the same website is demonstrably stale elsewhere — so this
+    could be fresh or long past. <b>Do not plan a trip around the Venice mikveh without direct confirmation:</b>
+    <a href="tel:+39041715012">+39 041 715012</a> · <a href="mailto:segreteria@jvenice.org">segreteria@jvenice.org</a>.
+    When operating, it requires <b>48 hours' minimum notice</b>. If it is out for your dates, the nearest realistic alternatives are
+    other Italian communities — Milan is about 2½ hours by train. A woman whose tevilah date falls during the trip should sort this out
+    <b>before booking travel</b>.
+  </div>
+
+  <h2 class="sec">Candle lighting and zmanim</h2>
+  <p>These three all resolve correctly to <b>Venice, Italy</b> — which matters, because Venice, California and Venice, Florida both exist
+    and both surface in searches. Chabad's Venice, Italy location ID is <b>561</b>; 560 is California.</p>
+  <table class="plain">
+    <thead><tr><th>Source</th><th>Link</th></tr></thead>
+    <tbody>
+      <tr><td>Chabad — candle lighting</td><td><a href="https://www.chabad.org/calendar/candleLighting_cdo/locationId/561/locationType/1/jewish/Candle-Lighting.htm" target="_blank" rel="noopener">chabad.org · Venice, Italy</a></td></tr>
+      <tr><td>Chabad — full zmanim</td><td><a href="https://www.chabad.org/calendar/zmanim_cdo/locationId/561/locationType/1/jewish/Halachic-Times.htm" target="_blank" rel="noopener">chabad.org · halachic times</a></td></tr>
+      <tr><td>MyZmanim</td><td><a href="https://www.myzmanim.com/day.aspx?vars=39496348" target="_blank" rel="noopener">myzmanim.com · Venezia</a></td></tr>
+      <tr><td>Hebcal</td><td><a href="https://www.hebcal.com/shabbat?geonameid=3164603" target="_blank" rel="noopener">hebcal.com · Venice, Veneto</a></td></tr>
+    </tbody>
+  </table>
+  <p><b>Rough seasonal shape</b>, for planning only — always use the links above for anything you act on:
+    late June ~20:45 · late July ~20:20 · late September ~19:00 · late October (after the clocks change) ~17:15 ·
+    mid-December ~16:10 · late March ~19:15.
+    <b>Note the cliff at the end of October</b> — a mid-November Shabbat starts before 16:30, which catches travellers out badly.</p>
+  <div class="note stop">
+    <b>Do not use jvenice.org for candle-lighting times.</b> The community homepage carries a Shabbat-times widget that was found
+    displaying a parashah roughly five to six weeks out of date. Use Chabad, MyZmanim or Hebcal.
+  </div>
+
+  <h2 class="sec">Walking, carrying and where to stay</h2>
+  <p>These distances were routed through a pedestrian routing engine from Campo di Ghetto Nuovo. <b>The realistic column is longer
+    because Venice is neither flat nor empty</b> — you will climb and descend a substantial number of stepped bridges, and in summer
+    you cannot walk at your own pace through the Rialto funnel and the Mercerie.</p>
+  <table class="plain">
+    <thead><tr><th>From the Ghetto to…</th><th>Routed</th><th>Engine time</th><th>Realistic</th></tr></thead>
+    <tbody>
+      <tr><td>Piazza San Marco</td><td>1,988 m</td><td>26 min</td><td><b>35–45 min</b></td></tr>
+      <tr><td>Rialto Bridge</td><td>1,370 m</td><td>18 min</td><td><b>25–30 min</b></td></tr>
+      <tr><td>Santa Lucia railway station</td><td>812 m</td><td>11 min</td><td><b>15 min</b></td></tr>
+    </tbody>
+  </table>
+  <p><b>Yes, vaporetti can be avoided entirely within the historic city.</b> But San Marco and back is an 80-minute round trip on Shabbat,
+    in the heat, in a suit. <b>Budget 40 minutes each way and you will not be stressed.</b></p>
+
+  <h3 class="sub">Where to stay, by how comfortable the Shabbat walk is</h3>
+  <table class="plain">
+    <thead><tr><th>Area</th><th>Walk to shul</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td><b>Cannaregio, immediate Ghetto</b></td><td>0–5 min</td><td>The obvious choice. Rimon Place is the community-certified kosher residence.</td></tr>
+      <tr><td>Wider Cannaregio / Strada Nova</td><td>5–15 min</td><td>Excellent — lots of hotel stock, flat and direct.</td></tr>
+      <tr><td>Santa Croce, San Polo</td><td>15–25 min</td><td>Very workable.</td></tr>
+      <tr><td>Rialto</td><td>~25 min</td><td>Fine once a Shabbat; tiring twice a day.</td></tr>
+      <tr><td>San Marco, Dorsoduro</td><td>35–45 min</td><td>A real commitment. You won't return between Shacharit and Mincha.</td></tr>
+      <tr><td>Castello east / Sant'Elena</td><td>45+ min</td><td>Inside the eruv since April 2026, but a long walk.</td></tr>
+      <tr><td><b>Giudecca, Lido, Murano, Mestre</b></td><td>—</td><td><b>Not walkable at all. Do not book here for Shabbat.</b> Mestre in particular looks close on a map and is a common, costly mistake — it is on the mainland, across the causeway.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub">Keys, doors and lights</h3>
+  <p>Venice has an advantage here: many small, historic, family-run properties still use <b>ordinary mechanical keys</b>. But ask in writing before booking:</p>
+  <ul>
+    <li><b>Does the room door use an electronic key card, and can you provide a mechanical key?</b></li>
+    <li><b>Ask about the building entrance separately.</b> This is the bigger problem in Venice than room doors — many properties use an
+      electronic street-door code or buzzer, and the <em>palazzo</em> entrance is often separate from the room door.</li>
+    <li><b>Ask them to disable the stairwell motion sensors</b>, or identify a stair route without them. Venetian stairwells are old and frequently sensor-lit.</li>
+    <li><b>Do not assume a lift exists.</b> Many historic buildings have none, or a small retrofitted one.</li>
+  </ul>
+  <div class="note">
+    <b>Friday afternoons are tight.</b> Gam Gam closes early, Gam Gam Goodies closes an hour before Shabbat, and the community office shuts
+    at 11:00. <b>Everything you need must be done Friday morning.</b>
+  </div>
+  <div class="note warn">
+    <b>On accessibility, be realistic.</b> The great majority of Venice's hundreds of bridges are <b>stepped, not ramped</b>.
+    For anyone using a wheelchair or walker, or unable to manage stairs, <b>Venice on Shabbat without vaporetti is genuinely difficult</b>,
+    because accessible routes depend on the small number of ramped bridges and on the waterbuses. Discuss the route from your hotel to the
+    Scola Spagnola with the community office in advance, and stay inside Cannaregio near the Ghetto.
+  </div>
+</section>
+
+<!-- ==================== PRACTICAL ==================== -->
+<section class="panel" id="tab-practical">
+  <p class="lede">Getting in, getting around, and the handful of Venice-specific things that trip people up.</p>
+
+  <h2 class="sec">Getting there</h2>
+  <div class="grid2">
+    <div class="factbox">
+      <h4 class="min">From Marco Polo airport</h4>
+      <p>Two real options. The <b>Alilaguna</b> waterbus goes direct to Venice by water — slower, scenic, and it can drop you close to
+        Cannaregio. Or the <b>ATVO / ACTV bus</b> to Piazzale Roma, which is fast and cheap, and from Piazzale Roma the Ghetto is a
+        short walk or one vaporetto stop. <b>Treviso airport is not Venice</b> — it is about an hour away by coach.</p>
+    </div>
+    <div class="factbox">
+      <h4 class="min">By train</h4>
+      <p>You want <b>Venezia Santa Lucia</b>, on the island — not Venezia Mestre, which is on the mainland. From Santa Lucia
+        <b>the Ghetto is about 800 m, roughly fifteen minutes on foot.</b> This is the single easiest arrival in Venice for anyone
+        staying in Cannaregio.</p>
+    </div>
+    <div class="factbox">
+      <h4 class="min">Luggage and bridges</h4>
+      <p>There are no cars, and every route involves stepped bridges. <b>Pack so that you can carry your bag up and down steps</b>,
+        or budget for a porter. Wheeled cases are miserable here.</p>
+    </div>
+    <div class="factbox">
+      <h4 class="min">The causeways</h4>
+      <p>Everyone arriving by land arrives in Cannaregio, and has since <b>11 January 1846</b>, when the railway bridge opened —
+        222 masonry arches, about 3,600 m, on 75,000 piles, the longest bridge in the world at the time. It ended a thousand years of
+        Venice being reachable only by boat.</p>
+    </div>
+  </div>
+
+  <h2 class="sec">Vaporetti</h2>
+  <p>Single rides are expensive and time-limited. <b>If you are making three or more boat trips in a day, a day pass is almost certainly cheaper</b> —
+    and multi-day passes exist. Validate at the pier every time you board; inspectors do check and fines are real.</p>
+  <ul>
+    <li><b>Line 1 is the slow scenic boat</b> that stops at everything on the Grand Canal — about 21 stops, roughly 45 minutes for the
+      canal segment alone. That is the point, not a flaw. The seats to want are the small open bow section, which fills first.</li>
+    <li><b>Line 1 does not stop at San Giorgio Maggiore</b> — that is Line 2.</li>
+    <li>For the Ghetto, <b>San Marcuola</b> is the Line 1 stop; lines 4.1/4.2/5.1/5.2 turn up the Cannaregio Canal and get closer still at <b>Guglie</b>.</li>
+    <li>Where the four bridges leave gaps, you cross by <b>traghetto</b> — a stripped-down gondola rowed by two oarsmen,
+      about €2 for visitors. <b>Venetians traditionally stand.</b> In the 1950s there were around thirty routes; today typically four actually run.</li>
+  </ul>
+
+  <h2 class="sec">Acqua alta</h2>
+  <p>High water season runs roughly October to January. It matters here for three separate reasons: <b>it cancels the eruv</b>,
+    it puts up the <em>passerelle</em> raised walkways and closes normal routes, and it can make a planned walk simply not walkable.
+    Bring boots in winter and check the tide forecast the day before.</p>
+
+  <h2 class="sec">Etiquette at religious sites</h2>
+  <ul>
+    <li><b>Bring your passport into the Ghetto.</b> There is a visible security presence, and access to services requires prior clearance.</li>
+    <li><b>Assume photography is not permitted inside the scole</b> unless your guide says otherwise. No policy is published;
+      these are working religious spaces with fragile 16th–17th century interiors. Ask at the desk.</li>
+    <li><b>Luggage is not permitted inside the museum.</b></li>
+    <li><b>Everything Jewish in Venice closes on Shabbat and Yom Tov</b> — museum, tours, Gam Gam, Ba'Ghetto, the bakery.
+      Plan Jewish sightseeing for Sunday to Friday, and check the specific dates of your trip against the operator's holiday closure list.</li>
+    <li>In churches — including several on the itinerary — <b>shoulders and knees covered</b> is the standard expectation.</li>
+  </ul>
+
+  <h2 class="sec">Kosher certification in Italy, briefly</h2>
+  <p>Certification in Italy is <b>devolved to local community rabbis</b> rather than run centrally, which is exactly what you see in Venice:
+    the Venice community certifies Venice establishments directly, and Chabad Italy runs its own parallel hashgacha. The
+    <b>Rabbinato Centrale</b> sits under UCEI, the umbrella body of Italian Jewish communities, as the national halachic authority —
+    but no working UCEI kashrut certification page or certified-products list could be found, so nothing more specific is claimed here.</p>
+  <p>Italy is a significant kosher <em>production</em> country — wine, cheese, oil, pasta — but much of that output is certified by
+    overseas agencies (OU, OK, Star-K, London Beth Din) or by Chabad Italy. <b>In supermarkets, do not rely on European symbols you do not
+    recognise.</b> And in restaurants, verify mevushal status if that matters to you.</p>
+
+  <h2 class="sec">How this guide was built, and what it does not know</h2>
+  <p>Everything here was researched against live sources and is labelled accordingly. Rather than hide the gaps, here they are:</p>
+  <ul>
+    <li><b>Chabad of Venice's address and phone.</b> Three conflicting addresses; the one phone number found sits in a single undated
+      directory. <b>It is deliberately not published here.</b> jewishvenice.org is JavaScript-gated and could not be read programmatically.</li>
+    <li><b>All Chabad Shabbat meal prices, booking deadlines and cancellation terms.</b></li>
+    <li><b>Gam Gam Goodies' address and phone</b> — genuinely irreconcilable between sources.</li>
+    <li><b>All coordinates.</b> Mapping services were unreachable, so every pin on this site is an approximate position derived from a
+      civic address. <b>The Google Maps links search by place name, which is why they land correctly even where the pin is a few metres out.</b></li>
+    <li><b>Whether the Rimon Place mikveh is operational</b>, given the community's suspension notice.</li>
+    <li><b>Photography policy</b> inside the synagogues and museum.</li>
+    <li><b>Kosher options in Mestre, Marghera and the Lido</b> — searched, none found, but not exhaustively.</li>
+  </ul>
+  <div class="note">
+    <b>If a phone number is missing from this site, that is a decision, not an oversight.</b> An invented-looking number that reaches
+    nobody is worse than no number at all.
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><b>Jewish Venice — a traveller's guide.</b> Built from live sources in July 2026. Historical claims are sourced inline;
+      contested points are flagged as contested rather than smoothed over. Practical details — hours, prices, supervision, transport —
+      change, and several are explicitly marked as unverified. <b>Confirm anything you are relying on.</b></p>
+    <p style="margin-top:12px">Images from Wikimedia Commons under CC BY-SA and public-domain licences, credited in each caption.
+      Map tiles © OpenStreetMap contributors, © CARTO. Not affiliated with the Comunità Ebraica di Venezia, Chabad of Venice,
+      or any establishment listed.</p>
+  </div>
+</footer>
+
+<button class="toplink" id="toplink" title="Back to top">↑</button>
+
+<script src="assets/vendor/leaflet.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

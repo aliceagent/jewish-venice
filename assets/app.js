@@ -23,7 +23,11 @@ function showTab(name, push=true){
   if(push && location.hash !== '#'+name) history.replaceState(null,'','#'+name);
   window.scrollTo({top:0, behavior:'instant'});
   // Leaflet needs a nudge when its container becomes visible
-  setTimeout(() => Object.values(maps).forEach(m => m && m.invalidateSize()), 60);
+  setTimeout(() => Object.values(maps).forEach(m => {
+    if(!m) return;
+    m.invalidateSize();
+    applyFit(m);
+  }), 60);
 }
 tabBtns.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
 document.addEventListener('click', e => {
@@ -109,6 +113,19 @@ function marker(m, item, cls, label, popup){
   });
   return L.marker([item.lat, item.lng], {icon}).bindPopup(popup).addTo(m);
 }
+/* Leaflet cannot measure a display:none container, so a fitBounds call on a map
+   in an inactive tab silently lands at world zoom and stays there — invalidateSize
+   resizes but never re-fits. Record the wanted view and apply it once the panel
+   is actually visible. */
+function fitTo(m, latlngs, maxZoom){
+  m._fit = {bounds: L.latLngBounds(latlngs), maxZoom};
+  applyFit(m);
+}
+function applyFit(m){
+  if(!m._fit || !m.getContainer().clientWidth) return;
+  m.fitBounds(m._fit.bounds, {maxZoom: m._fit.maxZoom, animate:false});
+  m._fit = null;   // once only — never fight a pan or zoom the reader has made
+}
 
 /* ---------- itinerary map ---------- */
 (function(){
@@ -137,7 +154,7 @@ function marker(m, item, cls, label, popup){
     marker(m, s, s.home?'home':'', label,
       body + `<br><a target="_blank" rel="noopener" href="${pin(s)}">📍 Open in Google Maps</a>`);
   });
-  m.fitBounds(L.latLngBounds(STOPS.map(s => [s.lat, s.lng])).pad(0.12));
+  fitTo(m, STOPS.map(s => [s.lat, s.lng]), 16);
 })();
 
 /* ---------- ghetto map + site cards ---------- */
@@ -145,8 +162,10 @@ function marker(m, item, cls, label, popup){
   const m = maps.ghetto = baseMap('map-ghetto', [45.4450, 12.3265], 16);
   JEWISH_SITES.forEach(s => marker(m, s, 'jew', s.n,
     `<b>${s.n}. ${s.name}</b>${s.blurb}<br><a target="_blank" rel="noopener" href="${pin(s)}">📍 Open in Google Maps</a>`));
+  // The Lido cemetery is 2.5 km away; including it would squash the eight
+  // Ghetto sites into one dot. Fit the walk, and let the reader pan to site 9.
   const inCity = JEWISH_SITES.filter(s => s.lat > 45.44);
-  m.fitBounds(L.latLngBounds(inCity.map(s => [s.lat, s.lng])).pad(0.35));
+  fitTo(m, inCity.map(s => [s.lat, s.lng]), 17);
 
   const host = document.getElementById('jsites');
   JEWISH_SITES.forEach(s => {
@@ -170,7 +189,7 @@ function marker(m, item, cls, label, popup){
   all.forEach((x,i) => marker(m, x, 'food', i+1,
     `<b>${x.name}</b><span style="color:#857d72">${x.kind}</span><br>${x.blurb}` +
     `<br><a target="_blank" rel="noopener" href="${pin(x)}">📍 Open in Google Maps</a>`));
-  m.fitBounds(L.latLngBounds(all.map(x => [x.lat, x.lng])).pad(0.4));
+  fitTo(m, all.map(x => [x.lat, x.lng]), 17);
 
   function card(x){
     const d = document.createElement('div');

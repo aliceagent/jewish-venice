@@ -256,3 +256,28 @@ topBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'
 
 /* ---------- deep link ---------- */
 if(location.hash) showTab(location.hash.slice(1), false);
+
+/* ---------- offline ----------
+   Registered after load so it never competes with first paint. Failure is
+   silent and harmless: without it the guide is simply online-only. */
+if('serviceWorker' in navigator){
+  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
+}
+
+/* Chrome/Android fires this when the guide is installable; iOS never does,
+   which is why the Practical tab spells out the Share-menu route by hand. */
+let installPrompt = null;
+const installBtn = document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  installPrompt = e;
+  if(installBtn) installBtn.hidden = false;
+});
+if(installBtn) installBtn.addEventListener('click', async () => {
+  if(!installPrompt) return;
+  installPrompt.prompt();
+  await installPrompt.userChoice;
+  installPrompt = null;
+  installBtn.hidden = true;
+});
+window.addEventListener('appinstalled', () => { if(installBtn) installBtn.hidden = true; });

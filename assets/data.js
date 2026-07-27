@@ -580,3 +580,132 @@ const TIMELINE = [
   {yr:'April 2026', t:'The Venice eruv agreement is <b>renewed and expanded</b> by Mayor Luigi Brugnaro and Chief Rabbi Alberto Sermoneta, newly including Sant’Elena.', c:'good'},
   {yr:'Today', t:'About <b>450 members</b> in the community. Very few Jews actually live in the Ghetto — commonly given as around thirty. <b>The rest live elsewhere in the city and in Mestre, priced out of the island they were once forbidden to leave.</b>'}
 ];
+
+/* ---------- Italian phrases ----------
+   Pronunciations are an approximation for an English speaker, stress in CAPS.
+   Where a word changes with the speaker's gender, both forms are given. */
+const PHRASES = [
+  {
+    id:'basics', icon:'🤝', title:'Courtesy, and the words that open doors',
+    note:'<b>Permesso</b> is the one to learn first. Venice is a city of narrow <em>calli</em> and crowded boats, and it is what you say to get past someone politely.',
+    lines:[
+      ['Good morning / good day','Buongiorno','bwon-JOR-no'],
+      ['Good evening','Buonasera','bwo-na-SEH-ra'],
+      ['Please','Per favore','per fa-VOH-reh'],
+      ['Thank you','Grazie','GRAH-tsyeh'],
+      ['You’re welcome / after you','Prego','PREH-go'],
+      ['Excuse me — may I get past?','Permesso','per-MES-so'],
+      ['Excuse me — may I ask you something?','Scusi','SKOO-zee'],
+      ['I’m sorry','Mi dispiace','mee dee-SPYAH-cheh'],
+      ['Yes / no','Sì / no','see / no'],
+      ['Goodbye','Arrivederci','ar-ree-veh-DER-chee'],
+      ['Do you speak English?','Parla inglese?','PAR-la een-GLEH-zeh'],
+      ['I don’t understand','Non capisco','non ka-PEES-ko'],
+      ['I don’t speak Italian','Non parlo italiano','non PAR-lo ee-ta-LYAH-no'],
+      ['How much is it?','Quanto costa?','KWAN-to KOS-ta']
+    ]
+  },
+  {
+    id:'kosher', icon:'🍽️', title:'Kashrut and what is in the food',
+    note:'<b>These questions get you information, not supervision.</b> A kitchen that answers every one of them correctly is still not kosher. Use them for reading a label, for checking what is in a dish at a non-supervised table you have already decided to eat at, and at the four supervised places — not as a way to make an ordinary restaurant work.',
+    lines:[
+      ['I eat only kosher food','Mangio solo cibo kosher','MAN-jo SOH-lo CHEE-bo KO-sher'],
+      ['I am Jewish','Sono ebreo / ebrea','SOH-no eh-BREH-o / eh-BREH-a'],
+      ['I can’t eat pork','Non posso mangiare il maiale','non POS-so man-JAH-reh eel ma-YAH-leh'],
+      ['I can’t eat shellfish or seafood','Non posso mangiare i frutti di mare','... ee FROOT-tee dee MAH-reh'],
+      ['I can’t eat meat and dairy together','Non posso mangiare carne e latticini insieme','KAR-neh eh lat-tee-CHEE-nee een-SYEH-meh'],
+      ['Does this contain…?','Contiene…?','kon-TYEH-neh'],
+      ['Is there meat in this?','C’è carne in questo?','cheh KAR-neh een KWES-to'],
+      ['Is there cheese or butter in it?','C’è formaggio o burro?','cheh for-MAJ-jo o BOOR-ro'],
+      ['Is it cooked in the same pan?','È cotto nella stessa padella?','eh KOT-to NEL-la STES-sa pa-DEL-la'],
+      ['Without cheese, please','Senza formaggio, per favore','SEN-tsa for-MAJ-jo'],
+      ['Is it sealed / unopened?','È sigillato?','eh see-jeel-LAH-to'],
+      ['I have a food allergy','Ho un’allergia alimentare','o oon-al-ler-JEE-a a-lee-men-TAH-reh'],
+      ['Where is the kosher bakery?','Dov’è il panificio kosher?','do-VEH eel pa-nee-FEE-cho KO-sher'],
+      ['Is this vegan?','È vegano?','eh veh-GAH-no']
+    ]
+  },
+  {
+    id:'jewish', icon:'🕍', title:'At the Ghetto and the synagogues',
+    note:'Remember that access needs to be arranged in advance and that you should have your passport on you. <b>Assume photography inside the scole is not permitted until someone tells you otherwise</b> — which is what the first question here is for.',
+    lines:[
+      ['I have a booking','Ho una prenotazione','o OO-na preh-no-ta-TSYOH-neh'],
+      ['May I take photographs?','Posso fare fotografie?','POS-so FAH-reh fo-to-gra-FEE-eh'],
+      ['Here is my passport','Ecco il mio passaporto','EK-ko eel MEE-o pas-sa-POR-to'],
+      ['I wrote to you by email','Vi ho scritto un’email','vee o SKREET-to oon-EE-mayl'],
+      ['What time is the service?','A che ora è la funzione?','a keh OH-ra eh la foon-TSYOH-neh'],
+      ['Is the synagogue open today?','La sinagoga è aperta oggi?','la see-na-GO-ga eh a-PER-ta OJ-jee'],
+      ['Is there a service on Friday evening?','C’è la funzione venerdì sera?','veh-ner-DEE SEH-ra'],
+      ['The museum / the synagogue','Il museo / la sinagoga','eel moo-ZEH-o / la see-na-GO-ga'],
+      ['Is there a guided tour in English?','C’è una visita guidata in inglese?','VEE-zee-ta gwee-DAH-ta']
+    ]
+  },
+  {
+    id:'around', icon:'🧭', title:'Getting around',
+    note:'Asking <em>Dov’è…?</em> and then following the pointed finger is more reliable here than any map, because Venetians navigate by landmark. <b>Say the name of the nearest big thing</b> — Rialto, San Marco, the station — rather than a street name.',
+    lines:[
+      ['Where is…?','Dov’è…?','do-VEH'],
+      ['Where is the Ghetto?','Dov’è il Ghetto?','do-VEH eel GET-to'],
+      ['How do I get to…?','Come si arriva a…?','KOH-meh see ar-REE-va a'],
+      ['Is it far?','È lontano?','eh lon-TAH-no'],
+      ['Left / right / straight on','A sinistra / a destra / sempre dritto','a see-NEE-stra / a DES-tra / SEM-preh DREET-to'],
+      ['Which waterbus goes to…?','Quale vaporetto va a…?','KWAH-leh va-po-RET-to va a'],
+      ['Where is the nearest stop?','Dov’è la fermata più vicina?','la fer-MAH-ta pyoo vee-CHEE-na'],
+      ['A day ticket, please','Un biglietto giornaliero, per favore','oon beel-YET-to jor-na-LYEH-ro'],
+      ['Does this boat stop at…?','Questo vaporetto ferma a…?','FER-ma a'],
+      ['I’m lost','Mi sono perso / persa','mee SOH-no PER-so / PER-sa'],
+      ['Is there a step-free way?','C’è un percorso senza scalini?','sen-tsa ska-LEE-nee'],
+      ['Is there high water today?','C’è l’acqua alta oggi?','cheh LAK-kwa AL-ta OJ-jee']
+    ]
+  },
+  {
+    id:'practical', icon:'🛎️', title:'Paying, shopping and the hotel door',
+    note:'<b>Il coperto</b> is the per-person cover charge, normal and legal in Italy, and it should be stated on the menu. The last two lines here are the Shabbat ones — ask them <b>in writing before you book</b>, not on arrival.',
+    lines:[
+      ['Do you take cards?','Accettate la carta?','at-chet-TAH-teh la KAR-ta'],
+      ['The bill, please','Il conto, per favore','eel KON-to'],
+      ['Is there a cover charge?','C’è il coperto?','cheh eel ko-PER-to'],
+      ['What time do you close?','A che ora chiudete?','a keh OH-ra kyoo-DEH-teh'],
+      ['Open / closed','Aperto / chiuso','a-PER-to / KYOO-zo'],
+      ['Do you have a mechanical key, not a card?','Avete una chiave meccanica, non una tessera?','KYAH-veh mek-KAH-nee-ka'],
+      ['Can the stairway sensor light be left on?','Si può lasciare accesa la luce delle scale?','la LOO-cheh DEL-leh SKAH-leh']
+    ]
+  },
+  {
+    id:'trouble', icon:'🚨', title:'If something goes wrong',
+    note:'<b>112 is the emergency number</b> — one number for police, ambulance and fire, and it works from any phone. Venice’s hospital, the Ospedale SS. Giovanni e Paolo, is in Castello, in a 16th-century <em>scuola</em> building.',
+    lines:[
+      ['Help!','Aiuto!','a-YOO-to'],
+      ['Call an ambulance','Chiami un’ambulanza','KYAH-mee oon-am-boo-LAN-tsa'],
+      ['Call the police','Chiami la polizia','la po-lee-TSEE-a'],
+      ['I need a doctor','Ho bisogno di un medico','o bee-ZOH-nyo dee oon MEH-dee-ko'],
+      ['Where is the hospital?','Dov’è l’ospedale?','los-peh-DAH-leh'],
+      ['I’ve lost my passport','Ho perso il passaporto','o PER-so eel pas-sa-POR-to'],
+      ['I don’t feel well','Non mi sento bene','non mee SEN-to BEH-neh'],
+      ['Leave me alone','Mi lasci in pace','mee LA-shee een PAH-cheh']
+    ]
+  }
+];
+
+/* The words actually painted on Venice's walls. The hand-lettered white street
+   signs are themselves called nizioleti — "little bed-sheets". */
+const VENETIAN = [
+  ['calle','A narrow street. The ordinary Venetian word — <em>via</em> barely exists here.'],
+  ['campo','A square. Only one square in Venice is a <em>piazza</em>, and it is San Marco.'],
+  ['campiello','A small square.'],
+  ['fondamenta','A street running along the side of a canal.'],
+  ['riva','A broad waterfront quay, wider than a fondamenta.'],
+  ['rio','A canal — any canal except the Grand Canal.'],
+  ['rio terà','A canal that was filled in. You are walking on water.'],
+  ['sotoportego','A passage running underneath a building. The Ghetto Vecchio has a famous one.'],
+  ['salizada','An early paved street — from <em>salizar</em>, to pave, when most were still mud.'],
+  ['ramo','A short branch off a larger street.'],
+  ['corte','A courtyard, very often a dead end.'],
+  ['ruga','A street lined with shops.'],
+  ['piscina','A former pool or basin, long since dry.'],
+  ['ca’','Short for <em>casa</em> — a palace. Ca’ d’Oro, Ca’ Rezzonico.'],
+  ['squero','A boatyard where gondolas are built and repaired.'],
+  ['traghetto','The stripped-down gondola that ferries you across the Grand Canal.'],
+  ['vaporetto','The public waterbus.'],
+  ['ponte','Bridge.']
+];

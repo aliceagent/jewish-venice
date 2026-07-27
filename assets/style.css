@@ -76,8 +76,8 @@ header.masthead::after{
 
 /* ---------- tabs ---------- */
 nav.tabs{position:relative; z-index:1; margin-top:6px}
-nav.tabs .tabrow{display:flex; gap:2px; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none}
-nav.tabs .tabrow::-webkit-scrollbar{display:none}
+/* wraps rather than scrolls: a hidden scroll strip silently swallows the last tabs */
+nav.tabs .tabrow{display:flex; flex-wrap:wrap; gap:3px}
 nav.tabs button{
   appearance:none; border:0; background:transparent; color:rgba(255,255,255,.76);
   font-family:var(--sans); font-size:14px; font-weight:600; letter-spacing:.005em;
@@ -277,6 +277,25 @@ footer.foot p{max-width:78ch}
          width:42px; height:42px; border-radius:50%; font-size:17px; box-shadow:var(--sh-2); display:none; z-index:900}
 .toplink.show{display:block}
 
+/* ---------- phrasebook ---------- */
+.phgroup{margin:0 0 32px}
+.phhead{font-family:var(--serif); font-size:20.5px; font-weight:650; margin:0 0 12px;
+        display:flex; align-items:center; gap:10px; letter-spacing:-.005em}
+.phlist{border:1px solid var(--line); border-radius:var(--r); overflow:hidden; background:var(--card); box-shadow:var(--sh-1)}
+.ph{display:grid; grid-template-columns:1fr 1.05fr .78fr; gap:2px 20px; align-items:baseline;
+    padding:11px 16px; border-bottom:1px solid var(--line-2)}
+.ph:last-child{border-bottom:0}
+.ph:nth-child(even){background:#fdfbf7}
+.ph .en{font-size:14px; color:var(--ink-2)}
+.ph .it{font-family:var(--serif); font-size:16.5px; font-weight:650; color:var(--ink)}
+.ph .pr{font-size:12.4px; color:var(--ink-3); letter-spacing:.012em}
+.venetian{display:grid; grid-template-columns:repeat(auto-fill,minmax(272px,1fr)); gap:10px}
+.vword{border:1px solid var(--line); border-radius:10px; padding:11px 14px; background:var(--card)}
+.vword b{font-family:var(--serif); font-size:16.5px; color:var(--brick); display:block; margin-bottom:2px}
+.vword span{font-size:13.5px; color:var(--ink-2); line-height:1.5}
+
+nav.tabs button .lbl-s{display:none}
+
 @media (max-width:860px){
   .brand h1{font-size:27px}
   .mapbox{height:400px}
@@ -284,6 +303,68 @@ footer.foot p{max-width:78ch}
   table.itin th:nth-child(3),table.itin td:nth-child(3){display:none}
   .card dl{grid-template-columns:1fr; gap:2px 0}
   .card dt{margin-top:8px}
+  .ph{grid-template-columns:1fr .8fr}
+  .ph .en{grid-column:1/-1; order:1; font-size:13.4px}
+  .ph .it{order:2}
+  .ph .pr{order:3; text-align:right}
+}
+
+/* ---------- touch layout ----------
+   Below this width the guide is being read one-handed, in the street. Every
+   tappable thing becomes a full-width control at least 46px tall with real
+   space around it, because the failure mode here is opening the wrong link. */
+@media (max-width:640px){
+  .wrap{padding:0 14px}
+  main{padding:24px 0 70px}
+
+  /* all seven tabs visible at once — a hidden scroll strip loses the last ones */
+  nav.tabs .tabrow{flex-wrap:wrap; gap:5px; overflow-x:visible}
+  nav.tabs button{
+    flex:1 1 21%; min-height:46px; padding:9px 7px; font-size:12.8px;
+    display:flex; align-items:center; justify-content:center; gap:4px;
+    border-radius:9px; border-bottom-width:2px;
+  }
+  nav.tabs button .ico{font-size:13px}
+  nav.tabs button .ico{margin-right:0}
+  nav.tabs button .lbl{display:none}
+  nav.tabs button .lbl-s{display:inline}
+
+  /* Itinerary rows become stacked blocks. As a real table the prose column was
+     squeezed to ~150px between the time and travel columns; this gives it the
+     full width and turns the two numbers into a quiet meta line. */
+  table.itin thead{display:none}
+  table.itin tr{display:block}
+  table.itin td{display:block; border-bottom:0}
+  table.itin tr.stop, table.itin tr.leg{border-bottom:1px solid var(--line-2)}
+  .cellpad{padding:2px 13px}
+  td.time{padding:13px 13px 1px; font-size:11.4px; letter-spacing:.07em; text-transform:uppercase;
+          color:var(--ink-3); font-weight:700}
+  td.dist{padding:1px 13px 13px; font-size:12.4px; color:var(--ink-3)}
+  td.dist.na{display:none}
+  tr.stop td.cellpad:not(.time):not(.dist),
+  tr.leg  td.cellpad:not(.time):not(.dist){padding:2px 13px 13px}
+  a.maplink, button.expander, tr.leg a.dirlink{
+    display:flex; align-items:center; gap:8px; width:100%; min-height:46px;
+    margin-top:10px; padding:0 13px; border:1px solid var(--line); border-radius:10px;
+    background:var(--paper-2); font-size:13.4px; font-weight:650; text-decoration:none;
+  }
+  a.maplink{color:var(--brick)}
+  button.expander{color:var(--lagoon-d); justify-content:flex-start}
+  tr.leg a.dirlink{color:var(--brick); background:var(--card)}
+  tr.leg a.dirlink.boatdir{color:var(--lagoon-d)}
+  .history{padding:4px 13px 20px}
+
+  /* the same rule for every other control on the page */
+  .btn{min-height:46px; display:inline-flex; align-items:center; padding:0 15px; font-size:13.4px}
+  .actions{display:flex; flex-wrap:wrap; gap:9px}
+  .actions .btn{flex:1 1 100%; justify-content:center}
+  .mapbox{height:330px}
+  .venetian{grid-template-columns:1fr}
+  .ph{padding:12px 13px}
+}
+@media (max-width:360px){
+  nav.tabs button{font-size:12.2px; padding:9px 4px}
+  nav.tabs button .ico{display:none}
 }
 @media print{
   nav.tabs,.toplink,.actions{display:none}

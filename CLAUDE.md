@@ -5,9 +5,10 @@ A static travel guide to Venice for Jewish travellers. Plain HTML/CSS/JS, no bui
 ## Structure
 
 ```
-index.html          shell + all long-form prose, six tab panels
+index.html          shell + all long-form prose, seven tab panels
 assets/style.css    design tokens and components
-assets/data.js      STOPS, ROWS, BOAT_PATHS, FOOD, SERVICES, JEWISH_SITES, TIMELINE
+assets/data.js      STOPS, ROWS, BOAT_PATHS, FOOD, SERVICES, JEWISH_SITES, TIMELINE, PHRASES, VENETIAN
+assets/social/      favicon, app icons, OG share image (generated — see below)
 assets/app.js       tab routing, Leaflet maps, expanders, link builders
 assets/vendor/      Leaflet 1.9.4, vendored — do not replace with a CDN link
 ```
@@ -39,9 +40,15 @@ This guide's entire value is that it is honestly labelled. A tidy-up pass that s
 python3 -m http.server 8000     # then open localhost:8000
 ```
 
-Before shipping a change, check in the browser console that there are **zero JS errors**, all six tabs render, and no link contains `undefined` or `NaN`. Expected counts: 36 itinerary rows, 9 history panels, 9 Ghetto cards, 29 timeline entries, 29 map markers.
+Before shipping a change, check in the browser console that there are **zero JS errors**, all seven tabs render, and no link contains `undefined` or `NaN`. Expected counts: 36 itinerary rows, 9 history panels, 9 Ghetto cards, 29 timeline entries, 29 map markers, 6 phrase groups, 64 phrase lines, 18 Venetian words, 46 Google Maps links.
+
+Check at a phone width too (390px). Two things regress easily there: **every tappable control must be at least 44px tall** — the itinerary rows previously stacked two links 6px apart — and **all seven tabs must be visible without horizontal scrolling**, since a hidden scroll strip silently swallows the last ones.
 
 Watch for shadowing globals in `app.js` — an earlier `const top = ...` collided with `window.top` and silently killed all rendering.
+
+**Never call `fitBounds` directly.** Leaflet cannot measure a `display:none` container, so a map built inside an inactive tab panel fits to world zoom and stays there — `invalidateSize()` on tab switch resizes it but does not re-fit. Use `fitTo(map, latlngs, maxZoom)`, which defers the fit until the panel is actually visible and applies it once only, so a reader's own pan is never overridden.
+
+The icons and OG image in `assets/social/` are rendered from HTML templates with headless Chromium rather than committed by hand; regenerate them the same way if the branding changes. `og:image` must stay an **absolute** URL or link previews break.
 
 ## Deploying
 

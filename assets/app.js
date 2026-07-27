@@ -51,7 +51,7 @@ ROWS.forEach((r, idx) => {
         (s.history ? `<div><button class="expander" aria-expanded="false" data-target="${hid}">
             <span class="tw">▶</span> Read the history of ${s.name.split(' — ')[0].split(' / ')[0]}</button></div>` : '') +
       `</td>` +
-      `<td class="cellpad dist">—</td><td class="cellpad dist">${s.dur || '—'}</td>`;
+      `<td class="cellpad dist">—</td><td class="cellpad dist${s.dur ? '' : ' na'}">${s.dur || '—'}</td>`;
     tb.appendChild(tr);
 
     if(s.history){
@@ -211,6 +211,31 @@ function applyFit(m){
   FOOD.filter(f => f.status !== 'closed').forEach(f => openHost.appendChild(card(f)));
   SERVICES.forEach(s => openHost.appendChild(card(s)));
   FOOD.filter(f => f.status === 'closed').forEach(f => closedHost.appendChild(card(f)));
+})();
+
+/* ---------- phrasebook ---------- */
+(function(){
+  const host = document.getElementById('phrasebook');
+  if(!host) return;
+  PHRASES.forEach(g => {
+    const sec = document.createElement('section');
+    sec.className = 'phgroup';
+    sec.innerHTML =
+      `<h3 class="phhead"><span class="ico">${g.icon}</span>${g.title}</h3>` +
+      (g.note ? `<div class="note" style="margin:0 0 16px">${g.note}</div>` : '') +
+      `<div class="phlist">${g.lines.map(l =>
+        `<div class="ph"><div class="en">${l[0]}</div><div class="it" lang="it">${l[1]}</div><div class="pr">${l[2]}</div></div>`
+      ).join('')}</div>`;
+    host.appendChild(sec);
+  });
+
+  const vhost = document.getElementById('venetian');
+  if(vhost) VENETIAN.forEach(([word, meaning]) => {
+    const d = document.createElement('div');
+    d.className = 'vword';
+    d.innerHTML = `<b lang="vec">${word}</b><span>${meaning}</span>`;
+    vhost.appendChild(d);
+  });
 })();
 
 /* ---------- timeline ---------- */

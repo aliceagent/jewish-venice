@@ -1,62 +1,43 @@
-# One-time deploy setup
+# How deploys work
 
-The deploy workflow (`.github/workflows/deploy.yml`) runs `vercel deploy --prod`
-on every push to `main` — from GitHub's runners, so the Vercel token never
-exists in any agent or developer environment.
+`git push` to `main` **is** the deploy. Nothing else to do, no credentials in
+any session.
 
-It needs exactly one secret. Until it is set, every run fails immediately with
-`VERCEL_TOKEN secret is not set`.
+The Vercel project `jewish-venice` (team "Alice Parrot's projects") is linked
+to this GitHub repo via Vercel's standard Git integration:
 
-## 1. Create a Vercel token
+- push to `main` → production deploy at **https://jewish-venice.vercel.app**
+- push to any other branch → preview deploy on its own URL
 
-<https://vercel.com/account/settings/tokens> → **Create Token**.
+There is no build: the site is static and served from the repo root
+(project output directory is `.`, framework "Other").
 
-- Scope: the account (or team) the site should live in.
-- If you set an expiry, set a reminder to rotate it.
+## One quirk to leave alone
 
-## 2. Store it as a GitHub secret named `VERCEL_TOKEN`
+The Vercel project has a build command:
 
-Prefer an **organisation-level** secret if the repo lives in an org — every
-future repo inherits it, which is what makes new projects zero-touch:
-
-> Org → Settings → Secrets and variables → Actions → **New organization secret**
-> → name `VERCEL_TOKEN`, repository access **All repositories**.
-
-For a personal account (no org secrets), set it per-repo instead:
-
-> Repo → Settings → Secrets and variables → Actions → **New repository secret**.
-
-Or with the `gh` CLI:
-
-```bash
-# org-wide (preferred, orgs only)
-gh secret set VERCEL_TOKEN --org <org> --visibility all
-
-# repo-level fallback
-gh secret set VERCEL_TOKEN --repo <owner>/jewish-venice
+```sh
+[ -f index.html ] || (curl -fsSL https://codeload.github.com/aliceagent/jewish-venice/tar.gz/refs/heads/main | tar -xz --strip-components=1)
 ```
 
-*Only if deploying into a Vercel **Team*** rather than a personal account, also
-add `VERCEL_ORG_ID` (Vercel → Team Settings → General → Team ID). The workflow
-passes it through when present.
+For Git-integration builds it is a **no-op** (the checkout contains
+`index.html`). It exists so the site can also be deployed from a Claude
+session via the Vercel MCP connector's `deploy_to_vercel` tool — uploading
+only a stub file tree — in which case the command fetches the real content
+from this repo's `main` tarball. That is how the project was first created,
+before the Git link existed.
 
-## 3. Re-run the workflow
+## Replicating this for a future project
 
-Actions → **Deploy to Vercel** → re-run the failed run (or just push to
-`main`). The first successful run **creates the Vercel project** automatically,
-named after the repo — there is no "Import Project" step in the dashboard. The
-run's summary page shows the live URL, and a smoke-test step confirms it
-returns HTTP 200.
+1. From a Claude session with the Vercel connector: `deploy_to_vercel` with
+   the project name and either the real files or the tarball-stub trick above.
+   This creates the Vercel project and puts the site live — no dashboard step.
+2. In the Vercel dashboard (one minute, once per project): Project →
+   Settings → Git → connect the GitHub repo, production branch `main`.
+3. From then on, plain `git push` deploys. Sessions never need Vercel
+   tokens; GitHub pushes go through the session's pre-authenticated git
+   remote.
 
-## After that
-
-`git push` to `main` is the only deploy action, forever. No per-project setup
-remains for future repos if the secret was set at org level.
-
-## First-visit check
-
-Once live, eyeball the pages in a real browser: the photos are hot-linked from
-Wikimedia Commons, which agent sandboxes cannot reach, so image loading has
-never been verified end-to-end. A broken image hides its whole `<figure>`
-(that's deliberate), so a missing photo looks like an intentional gap — check
-that the synagogue and bridge photos actually appear.
+There is deliberately **no** `VERCEL_TOKEN` GitHub secret and no deploy
+workflow in `.github/workflows` — an earlier iteration used one, but the Git
+integration replaced it.

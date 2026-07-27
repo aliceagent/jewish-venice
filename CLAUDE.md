@@ -45,6 +45,6 @@ Watch for shadowing globals in `app.js` — an earlier `const top = ...` collide
 
 ## Deploying
 
-`git push` to `main` triggers `.github/workflows/deploy.yml`, which deploys to Vercel from GitHub's runners. Requires a `VERCEL_TOKEN` secret (set org-wide so every repo inherits it). The token intentionally never exists in the agent environment.
+`git push` to `main` deploys to production via Vercel's Git integration — the Vercel project `jewish-venice` (team "Alice Parrot's projects") is linked to this repo, production branch `main`. Pushes to other branches create preview deploys. Live at https://jewish-venice.vercel.app. No Vercel tokens or secrets exist anywhere, deliberately; see SETUP.md for how the pieces fit (including the project's no-op-on-checkout build command — leave it alone).
 
 Do not add a build step. This site is deliberately dependency-free so it can be hosted anywhere, including plain GitHub Pages.

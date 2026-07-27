@@ -50,7 +50,7 @@ python3 -m http.server 8000
 
 **GitHub Pages** — enabled from the `main` branch root. `.nojekyll` is present so `assets/` is served as-is.
 
-**Vercel** — import the repo at [vercel.com/new](https://vercel.com/new). No framework, no build command, output directory `.`. `vercel.json` is included. Every push to `main` redeploys.
+**Vercel** — live at [jewish-venice.vercel.app](https://jewish-venice.vercel.app). The Vercel project is linked to this repo via Git integration: every push to `main` redeploys production, other branches get preview URLs. Static serve from the repo root, `vercel.json` included. See `SETUP.md` for details.
 
 ## Licence
 

@@ -54,4 +54,6 @@ The icons and OG image in `assets/social/` are rendered from HTML templates with
 
 `git push` to `main` deploys to production via Vercel's Git integration — the Vercel project `jewish-venice` (team "Alice Parrot's projects") is linked to this repo, production branch `main`. Pushes to other branches create preview deploys. Live at https://jewish-venice.vercel.app. No Vercel tokens or secrets exist anywhere, deliberately; see SETUP.md for how the pieces fit (including the project's no-op-on-checkout build command — leave it alone).
 
+**Ship to `main` after every change.** The owner's standing instruction is that work goes live, not onto a review branch — develop wherever you like, but fast-forward `main` and push when the change is tested, then confirm production actually serves it. Do not leave finished work sitting on a branch waiting to be merged.
+
 Do not add a build step. This site is deliberately dependency-free so it can be hosted anywhere, including plain GitHub Pages.

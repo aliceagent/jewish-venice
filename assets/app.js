@@ -194,7 +194,10 @@ function applyFit(m){
   function card(x){
     const d = document.createElement('div');
     d.className = 'card' + (x.status === 'closed' ? ' closed' : '');
-    const vfmap = {y:['y','verified'], p:['n','partly verified'], n:['n','unverified']};
+    /* 'p' used to map to the 'n' class, so "partly verified" and "unverified"
+       rendered identically and the guide's central three-state distinction was
+       invisible to anyone not reading the label word by word. */
+    const vfmap = {y:['y','verified'], p:['p','partly verified'], n:['n','unverified'], none:['none','none found']};
     d.innerHTML =
       `<h3>${x.name}</h3><p class="sub">${x.kind}</p>` +
       `<div>${(x.tags||[]).map(t => `<span class="chip ${t[0]}">${t[1]}</span>`).join('')}</div>` +
@@ -202,7 +205,10 @@ function applyFit(m){
       (x.rows && x.rows.length ? `<dl>${x.rows.map(r =>
         `<dt>${r[0]}</dt><dd>${r[1]} ${r[2] ? `<span class="vf ${vfmap[r[2]][0]}">${vfmap[r[2]][1]}</span>` : ''}</dd>`
       ).join('')}</dl>` : '') +
-      (x.caveat ? `<div class="note warn" style="margin:16px 0 0;font-size:13.6px">${x.caveat}</div>` : '') +
+      /* Every caveat used to be hardcoded to rung 2, so "the menu PDFs are dated
+         2023" shouted as loudly as a kashrut warning. Rung 2 is now reserved for
+         caveats that actually catch a traveller out; the rest sit at rung 3. */
+      (x.caveat ? `<div class="note ${/kosher|hashgach|supervis|closed|not certif|mikveh/i.test(x.caveat) ? 'warn' : 'gold'}" style="margin:16px 0 0;font-size:13.6px">${x.caveat}</div>` : '') +
       (x.lat ? `<div class="actions"><a class="btn pri" target="_blank" rel="noopener" href="${pin(x)}">📍 Google Maps</a></div>` : '');
     return d;
   }

@@ -24,9 +24,16 @@
   --green:#166534;
   --green-l:#e8f3ec;
 
+  --gold-d:#7d5e12;
+
   --ok:#166534; --ok-bg:#e8f3ec;
-  --warn:#92400e; --warn-bg:#fdf0e3;
-  --stop:#991b1b; --stop-bg:#fdecec;
+  --warn:#92400e; --warn-bg:#fdf0e3; --warn-line:#f0dcc3;
+  --stop:#991b1b; --stop-bg:#fdecec; --stop-line:#f3d5d5;
+
+  /* hollow segments of the confidence bar — the missing evidence, drawn */
+  --vf-hollow-gold:#e3d3a8;
+  --vf-hollow-brick:#e6c3b4;
+  --vf-hollow-plum:#dcc4d6;
 
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
   --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
@@ -121,23 +128,82 @@ li{margin-bottom:7px}
 .chip.neutral{background:var(--paper-2); color:var(--ink-2)}
 .chip.plum{background:var(--plum-l); color:var(--plum)}
 
-/* ---------- callouts ---------- */
+/* ---------- callouts: a severity ladder ----------
+   Four tints at equal volume read as four categories, not four levels. So the
+   rungs differ in how much of the column they interrupt — full-bleed break,
+   then inset block with a bar, then hairline card, then a single rule with no
+   fill. Volume is structural; colour only says which kind. */
 .note{
   border-radius:var(--r); padding:15px 17px; margin:20px 0; font-size:14.6px; max-width:78ch;
   border:1px solid var(--line); background:var(--card); border-left:4px solid var(--lagoon);
 }
 .note b:first-child{color:var(--ink)}
-.note.warn{border-left-color:var(--warn); background:var(--warn-bg); border-color:#f0dcc3}
-.note.stop{border-left-color:var(--stop); background:var(--stop-bg); border-color:#f3d5d5}
-.note.ok{border-left-color:var(--ok); background:var(--ok-bg); border-color:#cfe4d6}
-.note.gold{border-left-color:var(--gold); background:var(--gold-l); border-color:#eadfbc}
 .note p:last-child{margin-bottom:0}
 .note ul{margin:8px 0 0; padding-left:20px}
 
-/* verification tag */
-.vf{font-size:11px; font-weight:700; letter-spacing:.05em; padding:2px 7px; border-radius:5px; white-space:nowrap}
-.vf.y{background:var(--ok-bg); color:var(--ok)}
-.vf.n{background:var(--warn-bg); color:var(--warn)}
+/* rung 1 — do not rely on this. Capped at three in the whole guide. */
+.note.stop{
+  border:1px solid var(--stop-line); border-left:1px solid var(--stop-line);
+  background:var(--stop-bg); padding:0 17px 15px; overflow:hidden; margin:26px 0;
+  box-shadow:0 2px 10px rgba(153,27,27,.10);
+}
+.note.stop::before{
+  content:"Do not rely on this"; display:block; background:var(--stop); color:#fff;
+  font:800 10.5px/1.3 var(--sans); letter-spacing:.14em; text-transform:uppercase;
+  padding:9px 17px; margin:0 -17px 14px;
+}
+/* an accurate header beats one generic label — the void eruv is not a bad source */
+.note.stop[data-label]::before{content:attr(data-label)}
+
+/* rung 2 — this will catch you out */
+.note.warn{
+  border:1px solid var(--warn-line); border-left:5px solid var(--warn);
+  background:var(--warn-bg); border-radius:0 var(--r) var(--r) 0;
+}
+/* rung 3 — worth knowing */
+.note.gold{
+  border:1px solid var(--line); border-left:1px solid var(--line);
+  background:var(--card); border-radius:10px; box-shadow:none;
+}
+.note.gold b:first-child{color:var(--gold-d)}
+/* rung 4 — confirmed, do this. A rule, no fill. */
+.note.ok{
+  border:0; border-top:2px solid var(--ok); border-radius:0; background:transparent;
+  padding:12px 0 0; box-shadow:none;
+}
+
+/* ---------- verification tag ----------
+   One inversion carries this: verified is the quietest of the three and
+   unverified is the loudest. A green tick on the good claims trains the eye to
+   hunt for reassurance and lets hedged claims pass as fine. Confidence is drawn
+   as three segments so it reads as a quantity, and the low end is the one that
+   changes colour, breaks to a dashed border, and gains weight. Dashed is doing
+   real work — it is the only non-solid border in the system, so "incomplete"
+   survives sunlight, dark mode, print and a colour-blind reader. */
+.vf{
+  display:inline-flex; align-items:center; gap:9px; vertical-align:1px;
+  font:700 10.5px/1 var(--sans); letter-spacing:.085em; text-transform:uppercase;
+  padding:4px 8px 4px 7px; border-radius:5px; white-space:nowrap; border:1px solid transparent;
+}
+.vf::before{
+  content:""; width:3px; height:10px; border-radius:1px; background:currentColor;
+  box-shadow:5px 0 0 currentColor, 10px 0 0 currentColor; margin-right:10px;
+}
+.vf.y{background:var(--lagoon-l); color:var(--lagoon-d); border-color:#cfe3e4}
+.vf.p{background:var(--gold-l); color:var(--gold-d); border-color:#eadfbc}
+.vf.p::before{box-shadow:5px 0 0 currentColor, 10px 0 0 var(--vf-hollow-gold)}
+.vf.n{
+  background:var(--brick-l); color:var(--brick); border:1px dashed var(--brick);
+  font-weight:800;
+}
+.vf.n::before{box-shadow:5px 0 0 var(--vf-hollow-brick), 10px 0 0 var(--vf-hollow-brick)}
+/* a fourth state: "none found" is not "none exists", and the difference matters */
+.vf.none{background:var(--plum-l); color:var(--plum); border-color:#e6d3e2}
+.vf.none::before{
+  background:var(--vf-hollow-plum);
+  box-shadow:5px 0 0 var(--vf-hollow-plum), 10px 0 0 var(--vf-hollow-plum);
+}
+.vf .why{font-weight:600; letter-spacing:.02em; text-transform:none; opacity:.85}
 
 /* ---------- map ---------- */
 .mapbox{height:520px; border:1px solid var(--line); border-radius:var(--r); background:#dfe8ea; box-shadow:var(--sh-1)}
@@ -315,7 +381,23 @@ nav.tabs button .lbl-s{display:none}
    space around it, because the failure mode here is opening the wrong link. */
 @media (max-width:640px){
   .wrap{padding:0 14px}
-  main{padding:24px 0 70px}
+  main{padding:20px 0 70px}
+
+  /* The hero repeated the site's title and a five-line tagline above every tab —
+     ~230px of furniture before any content, on every single view. The title bar
+     stays; the tagline and stamp are a first-impression device that a returning
+     reader on a bridge does not need. */
+  header.masthead{padding-top:16px}
+  .stamp{display:none}
+  .brand h1{font-size:23px; margin-bottom:0}
+  .brand .heb{font-size:18px}
+  .tagline{display:none}
+  .lede{font-size:17.5px; margin-bottom:20px}
+  h2.sec{font-size:23px; margin-top:34px}
+
+  /* rung 1 is the only thing in the guide that breaks the gutter, so it can
+     never be mistaken for a decorative aside */
+  .panel > .note.stop{margin-left:-14px; margin-right:-14px; border-radius:0; border-left:0; border-right:0}
 
   /* all seven tabs visible at once — a hidden scroll strip loses the last ones */
   nav.tabs .tabrow{flex-wrap:wrap; gap:5px; overflow-x:visible}
@@ -329,20 +411,38 @@ nav.tabs button .lbl-s{display:none}
   nav.tabs button .lbl{display:none}
   nav.tabs button .lbl-s{display:inline}
 
-  /* Itinerary rows become stacked blocks. As a real table the prose column was
-     squeezed to ~150px between the time and travel columns; this gives it the
-     full width and turns the two numbers into a quiet meta line. */
+  /* Itinerary: stops outrank legs.
+     As a real table the prose column was squeezed to ~150px between the time and
+     travel columns. Now each stop is a white field card and each leg collapses to
+     a quiet paper connector, so the eye counts stops rather than rows — 36 rows
+     reads as roughly 18 events. */
+  .tablecard{border:0; background:transparent; box-shadow:none; overflow:visible}
   table.itin thead{display:none}
   table.itin tr{display:block}
   table.itin td{display:block; border-bottom:0}
-  table.itin tr.stop, table.itin tr.leg{border-bottom:1px solid var(--line-2)}
-  .cellpad{padding:2px 13px}
-  td.time{padding:13px 13px 1px; font-size:11.4px; letter-spacing:.07em; text-transform:uppercase;
+  .cellpad{padding:2px 15px}
+  td.time{padding:13px 15px 1px; font-size:11.4px; letter-spacing:.07em; text-transform:uppercase;
           color:var(--ink-3); font-weight:700}
-  td.dist{padding:1px 13px 13px; font-size:12.4px; color:var(--ink-3)}
+  td.dist{padding:1px 15px 13px; font-size:12.4px; color:var(--ink-3)}
   td.dist.na{display:none}
-  tr.stop td.cellpad:not(.time):not(.dist),
-  tr.leg  td.cellpad:not(.time):not(.dist){padding:2px 13px 13px}
+
+  /* field register — the stop */
+  table.itin tr.stop{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--r);
+    box-shadow:var(--sh-1); margin:0 0 10px; overflow:hidden;
+  }
+  tr.stop td.cellpad:not(.time):not(.dist){padding:2px 15px 14px}
+  .stopname{font-size:16.5px}
+
+  /* connector — the leg */
+  table.itin tr.leg{
+    background:transparent; border:0; border-left:2px dashed var(--line);
+    margin:0 0 10px 22px; padding:2px 0 2px 16px; position:relative;
+  }
+  tr.leg td.time{padding:2px 0 1px; font-size:11px}
+  tr.leg td.cellpad:not(.time):not(.dist){padding:1px 0 4px}
+  tr.leg td.dist{padding:0 0 4px}
+  tr.leg a.dirlink{background:transparent; border:1px solid var(--line); margin-top:8px}
   a.maplink, button.expander, tr.leg a.dirlink{
     display:flex; align-items:center; gap:8px; width:100%; min-height:46px;
     margin-top:10px; padding:0 13px; border:1px solid var(--line); border-radius:10px;
@@ -370,4 +470,46 @@ nav.tabs button .lbl-s{display:none}
   nav.tabs,.toplink,.actions{display:none}
   .panel{display:block !important}
   body{background:#fff}
+}
+
+/* ---------- night ----------
+   Not an inversion. The ground goes cool near-black with a trace of lagoon and
+   the ink stays warm paper-white, so it reads as candlelight on water rather
+   than as a terminal, and peak luminance stays low for a dark calle. Only the
+   tokens change — every component already reads them.
+
+   Brick had to move: #9a3412 on a dark ground fails contrast, and the fix
+   cannot be "make the warnings quieter". Rung 1 keeps a saturated fill with
+   near-white text; body brick lifts to #e08a5f. The ladder was re-checked in
+   the dark rather than assumed to survive. */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0e1416; --paper-2:#141c1e; --card:#161e20;
+    --ink:#ece5d8; --ink-2:#c3bcb0; --ink-3:#8f8a80;
+    --line:#2a3538; --line-2:#212b2d;
+
+    --lagoon:#7fc4c8; --lagoon-d:#a5dadd; --lagoon-l:#16302f;
+    --brick:#e08a5f; --brick-l:#33201a;
+    --gold:#d6b25e; --gold-d:#e0c98a; --gold-l:#2d2517;
+    --plum:#d8a8cc; --plum-l:#2c1d29;
+    --green:#7fc79a; --green-l:#16281d;
+
+    --ok:#7fc79a; --ok-bg:#16281d;
+    --warn:#e6b980; --warn-bg:#2b2117; --warn-line:#4a3a26;
+    --stop:#c4503f; --stop-bg:#2e1a19; --stop-line:#4d2b28;
+
+    --vf-hollow-gold:#5a4a26;
+    --vf-hollow-brick:#5e3a2c;
+    --vf-hollow-plum:#4a3244;
+
+    --sh-1:0 1px 2px rgba(0,0,0,.4);
+    --sh-2:0 4px 16px rgba(0,0,0,.45);
+  }
+  :root:not([data-theme="light"]) .note.stop::before{color:#fff8f4}
+  :root:not([data-theme="light"]) .mapbox{background:#16292b}
+  :root:not([data-theme="light"]) .history{background:linear-gradient(180deg,#131b1d,#161e20)}
+  :root:not([data-theme="light"]) tr.leg{background:#121a1c}
+  :root:not([data-theme="light"]) .ph:nth-child(even){background:#131b1d}
+  /* the photographs are lit for a white page; take the glare off them */
+  :root:not([data-theme="light"]) .history figure img{filter:brightness(.86) contrast(1.02)}
 }

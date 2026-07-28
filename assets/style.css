@@ -348,17 +348,43 @@ footer.foot p{max-width:78ch}
 .phhead{font-family:var(--serif); font-size:20.5px; font-weight:650; margin:0 0 12px;
         display:flex; align-items:center; gap:10px; letter-spacing:-.005em}
 .phlist{border:1px solid var(--line); border-radius:var(--r); overflow:hidden; background:var(--card); box-shadow:var(--sh-1)}
-.ph{display:grid; grid-template-columns:1fr 1.05fr .78fr; gap:2px 20px; align-items:baseline;
-    padding:11px 16px; border-bottom:1px solid var(--line-2)}
+.ph{display:grid; grid-template-columns:1fr 1.05fr .78fr 46px; gap:2px 20px; align-items:center;
+    padding:9px 10px 9px 16px; border-bottom:1px solid var(--line-2)}
 .ph:last-child{border-bottom:0}
 .ph:nth-child(even){background:#fdfbf7}
 .ph .en{font-size:14px; color:var(--ink-2)}
 .ph .it{font-family:var(--serif); font-size:16.5px; font-weight:650; color:var(--ink)}
 .ph .pr{font-size:12.4px; color:var(--ink-3); letter-spacing:.012em}
 .venetian{display:grid; grid-template-columns:repeat(auto-fill,minmax(272px,1fr)); gap:10px}
-.vword{border:1px solid var(--line); border-radius:10px; padding:11px 14px; background:var(--card)}
-.vword b{font-family:var(--serif); font-size:16.5px; color:var(--brick); display:block; margin-bottom:2px}
+.vword{border:1px solid var(--line); border-radius:10px; padding:9px 10px 11px 14px; background:var(--card)}
+.vhead{display:flex; align-items:center; justify-content:space-between; gap:8px}
+.vword b{font-family:var(--serif); font-size:16.5px; color:var(--brick); margin-bottom:2px}
 .vword span{font-size:13.5px; color:var(--ink-2); line-height:1.5}
+
+/* ---------- say-it-aloud ----------
+   Uses the device's own speech synthesis, so there is no library and no network
+   call, and on a phone with a local Italian voice it works offline like the rest
+   of the guide. Removed outright where the browser cannot speak. */
+.say{
+  appearance:none; width:44px; height:44px; padding:0; border-radius:10px; cursor:pointer;
+  border:1px solid var(--line); background:var(--paper-2); color:var(--lagoon-d);
+  display:inline-flex; align-items:center; justify-content:center; justify-self:end; flex:0 0 auto;
+  transition:background .15s, color .15s, border-color .15s;
+}
+.say svg{width:19px; height:19px; fill:currentColor; stroke:currentColor; stroke-width:1.7;
+         stroke-linecap:round; overflow:visible}
+.say svg path{fill:none}
+.say svg path:first-child{fill:currentColor; stroke-linejoin:round}
+.say:hover{background:var(--lagoon-l); border-color:var(--lagoon); color:var(--lagoon-d)}
+.say:focus-visible{outline:2px solid var(--lagoon); outline-offset:2px}
+.say.on{background:var(--lagoon); border-color:var(--lagoon); color:#fff}
+/* the sound waves animate only while actually speaking */
+.say.on .w1{animation:wv .9s ease-in-out infinite}
+.say.on .w2{animation:wv .9s ease-in-out .15s infinite}
+@keyframes wv{0%,100%{opacity:.35}50%{opacity:1}}
+@media (prefers-reduced-motion: reduce){
+  .say.on .w1,.say.on .w2{animation:none}
+}
 
 nav.tabs button .lbl-s{display:none}
 
@@ -369,10 +395,12 @@ nav.tabs button .lbl-s{display:none}
   table.itin th:nth-child(3),table.itin td:nth-child(3){display:none}
   .card dl{grid-template-columns:1fr; gap:2px 0}
   .card dt{margin-top:8px}
-  .ph{grid-template-columns:1fr .8fr}
-  .ph .en{grid-column:1/-1; order:1; font-size:13.4px}
-  .ph .it{order:2}
-  .ph .pr{order:3; text-align:right}
+  /* stacked, with the speak button held alongside all three lines */
+  .ph{grid-template-columns:1fr 46px; gap:1px 12px; align-items:center}
+  .ph .en{grid-column:1; grid-row:1; font-size:13.4px}
+  .ph .it{grid-column:1; grid-row:2}
+  .ph .pr{grid-column:1; grid-row:3}
+  .ph .say{grid-column:2; grid-row:1 / 4}
 }
 
 /* ---------- touch layout ----------

@@ -223,6 +223,26 @@ function applyFit(m){
 (function(){
   const host = document.getElementById('phrasebook');
   if(!host) return;
+
+  /* Speech is the platform's own — no library, no network call, and on a device
+     with a local Italian voice it keeps working offline like the rest of the
+     guide. Where the browser has no synthesis at all the buttons are removed
+     rather than left to do nothing. */
+  const synth = window.speechSynthesis;
+  const canSpeak = !!(synth && typeof SpeechSynthesisUtterance === 'function');
+
+  /* Read aloud, not read literally: the ellipsis in "Contiene…?" is a slot for a
+     word, and "ebreo / ebrea" is two alternatives, not a slash. */
+  const forSpeech = s => s.replace(/…/g, ' ').replace(/\s*\/\s*/g, ', ')
+                          .replace(/\s+/g, ' ').replace(/\s+([?!.,])/g, '$1').trim();
+  const sayBtn = text =>
+    `<button class="say" type="button" data-say="${forSpeech(text).replace(/"/g,'&quot;')}"` +
+    ` aria-label="Say it: ${text.replace(/"/g,'&quot;')}">` +
+    `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">` +
+    `<path d="M4 9.5h3.2L12 5.4v13.2L7.2 14.5H4z"/>` +
+    `<path class="w1" d="M15.4 9.2a4 4 0 0 1 0 5.6"/>` +
+    `<path class="w2" d="M18 6.6a7.6 7.6 0 0 1 0 10.8"/></svg></button>`;
+
   PHRASES.forEach(g => {
     const sec = document.createElement('section');
     sec.className = 'phgroup';
@@ -230,7 +250,8 @@ function applyFit(m){
       `<h3 class="phhead"><span class="ico">${g.icon}</span>${g.title}</h3>` +
       (g.note ? `<div class="note" style="margin:0 0 16px">${g.note}</div>` : '') +
       `<div class="phlist">${g.lines.map(l =>
-        `<div class="ph"><div class="en">${l[0]}</div><div class="it" lang="it">${l[1]}</div><div class="pr">${l[2]}</div></div>`
+        `<div class="ph"><div class="en">${l[0]}</div><div class="it" lang="it">${l[1]}</div>` +
+        `<div class="pr">${l[2]}</div>${sayBtn(l[1])}</div>`
       ).join('')}</div>`;
     host.appendChild(sec);
   });
@@ -239,9 +260,61 @@ function applyFit(m){
   if(vhost) VENETIAN.forEach(([word, meaning]) => {
     const d = document.createElement('div');
     d.className = 'vword';
-    d.innerHTML = `<b lang="vec">${word}</b><span>${meaning}</span>`;
+    d.innerHTML = `<div class="vhead"><b lang="vec">${word}</b>${sayBtn(word)}</div><span>${meaning}</span>`;
     vhost.appendChild(d);
   });
+
+  if(!canSpeak){
+    document.querySelectorAll('.say').forEach(b => b.remove());
+    document.querySelectorAll('.ttsnote').forEach(n => n.remove());
+    return;
+  }
+
+  /* Voice lists populate asynchronously, and on some browsers only after the
+     first getVoices() call, so ask now and again on the change event. */
+  let voice = null;
+  function pickVoice(){
+    const vs = synth.getVoices() || [];
+    voice = vs.find(v => v.lang === 'it-IT' && v.localService)
+         || vs.find(v => v.lang === 'it-IT')
+         || vs.find(v => (v.lang || '').toLowerCase().startsWith('it'))
+         || null;
+  }
+  pickVoice();
+  if(typeof synth.addEventListener === 'function') synth.addEventListener('voiceschanged', pickVoice);
+
+  let speaking = null;
+  function clearState(){
+    if(speaking) speaking.classList.remove('on');
+    speaking = null;
+  }
+
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.say');
+    if(!btn) return;
+    e.preventDefault();
+
+    // tapping the button that is already talking stops it
+    const again = btn === speaking;
+    synth.cancel();
+    clearState();
+    if(again) return;
+
+    const u = new SpeechSynthesisUtterance(btn.dataset.say);
+    u.lang = 'it-IT';
+    if(voice) u.voice = voice;
+    u.rate = 0.85;          // a shade under natural — these are being copied, not listened to
+    u.onend = clearState;
+    u.onerror = clearState;
+    speaking = btn;
+    btn.classList.add('on');
+    synth.speak(u);
+  });
+
+  // never leave a voice running into another tab or a page the reader has left
+  window.addEventListener('pagehide', () => synth.cancel());
+  document.addEventListener('visibilitychange', () => { if(document.hidden){ synth.cancel(); clearState(); } });
+  tabBtns.forEach(b => b.addEventListener('click', () => { synth.cancel(); clearState(); }));
 })();
 
 /* ---------- timeline ---------- */

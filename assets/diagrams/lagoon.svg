@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 400" role="img"
+     aria-labelledby="lg-t lg-d" class="dgm">
+<style>
+  svg{--d-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  svg{
+    --d-sky:#f4efe4; --d-water:#cbe1e4; --d-waterline:#0e6b73; --d-sea:#a9cdd4;
+    --d-mud:#cec2ac; --d-caranto:#a3927a; --d-deep:#82735c; --d-land:#ded7c5;
+    --d-brick:#c98b6a; --d-stone:#ece5d7; --d-wood:#c69a63; --d-wood-2:#ad8452;
+    --d-pile:#bb946d; --d-sand:#e7dab9; --d-clay:#b6a28a; --d-city:#e0b98a;
+    --d-conc:#cfc7b8; --d-gate:#7d8b8f; --d-river:#3f8598; --d-stopline:#991b1b;
+    --d-line:#6b6459; --d-ink:#191713; --d-ink-2:#5c554b; --d-rule:#a49c92; --d-accent:#9a3412;
+  }
+  @media (prefers-color-scheme: dark){
+    svg{
+      --d-sky:#111a1c; --d-water:#1c3a3e; --d-waterline:#7fc4c8; --d-sea:#16302f;
+      --d-mud:#2e2822; --d-caranto:#453a2c; --d-deep:#1a1611; --d-land:#232a26;
+      --d-brick:#7a4a33; --d-stone:#3a3a36; --d-wood:#6b5133; --d-wood-2:#5a4229;
+      --d-pile:#6d5539; --d-sand:#4a412b; --d-clay:#3c342a; --d-city:#7d5f3c;
+      --d-conc:#3a3a36; --d-gate:#4a5457; --d-river:#5aa6b8; --d-stopline:#c4503f;
+      --d-line:#9a9186; --d-ink:#ece5d8; --d-ink-2:#b3aca1; --d-rule:#6f6a62; --d-accent:#e08a5f;
+    }
+  }
+</style>
+  <title id="lg-t">The lagoon as a machine</title>
+  <desc id="lg-d">A schematic of the Venetian lagoon. A chain of long sandbars separates it from the Adriatic, broken by three inlets. Twice a day the tide moves through those inlets and flushes the lagoon. The Republic diverted the rivers that fed the lagoon out to sea, so that their silt would not fill it in.</desc>
+
+    <rect x="0" y="0" width="620" height="400" fill="var(--d-sky)"/>
+  <!-- mainland -->
+  <path d="M0 0h176q-14 62 4 124 20 62-4 124 22 74 2 152H0z" fill="var(--d-land)"/>
+  <!-- lagoon -->
+  <path d="M176 0q-14 62 4 124 20 62-4 124 22 74 2 152h280q6-78-6-152 16-62-2-124 16-62 2-124z" fill="var(--d-water)"/>
+  <!-- open sea -->
+  <path d="M620 0H456q14 62-2 124 18 62 2 124 12 74 6 152h158z" fill="var(--d-sea)"/>
+
+  <!-- the barrier sandbars, broken by three inlets -->
+  <g fill="var(--d-sand)" stroke="var(--d-line)" stroke-width="1.4">
+    <path d="M452 6q10 46 2 86h-24q8-42-2-86z"/>
+    <path d="M452 126q10 50 2 96h-24q8-48-2-96z"/>
+    <path d="M450 282q10 40 4 76h-24q6-38-4-76z"/>
+    <path d="M448 394h24v6h-24z"/>
+  </g>
+  <!-- the three inlets -->
+  <g fill="var(--d-sea)">
+    <rect x="428" y="92" width="26" height="34"/>
+    <rect x="428" y="222" width="26" height="60"/>
+    <rect x="426" y="358" width="26" height="36"/>
+  </g>
+
+  <!-- tide moving through the inlets -->
+  <g stroke="var(--d-accent)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M474 109h-84"/><path d="M398 101l-9 8 9 9"/>
+    <path d="M390 252h84"/><path d="M466 244l9 8-9 9"/>
+  </g>
+
+  <!-- rivers: the old course into the lagoon, stopped; the new course taken around it -->
+  <g stroke="var(--d-river)" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M0 176q66 4 100 26 40 26 70 30" stroke-dasharray="7 6" opacity=".45"/>
+    <path d="M0 62q78-10 150-16 120-10 214-14" />
+    <path d="M0 322q84 12 160 20 116 12 208 16" />
+  </g>
+  <g stroke="var(--d-stopline)" stroke-width="3.2" stroke-linecap="round">
+    <path d="M158 216l26 26M184 216l-26 26"/>
+  </g>
+
+  <!-- the city -->
+  <path d="M268 178q34-16 62 2 26 16 10 44-18 30-56 22-40-8-38-38 2-20 22-30z"
+        fill="var(--d-city)" stroke="var(--d-line)" stroke-width="1.8"/>
+  <path d="M274 188q30 22 66 16M282 224q34-6 58-26" stroke="var(--d-line)" stroke-width="1.2" fill="none" opacity=".6"/>
+
+  <g font-family="var(--d-font)" font-size="12.5" fill="var(--d-ink)">
+    <text x="46" y="120" font-weight="700">Mainland</text>
+    <text x="556" y="196" font-weight="700" text-anchor="middle">Adriatic</text>
+    <text x="300" y="256" text-anchor="middle" font-weight="700">Venice</text>
+    <text x="206" y="86" font-size="11.5" fill="var(--d-river)" font-weight="700">rivers taken around the lagoon</text>
+    <text x="206" y="330" font-size="11.5" fill="var(--d-river)" font-weight="700">…and around the other side</text>
+    <text x="140" y="268" font-size="11.5" fill="var(--d-stopline)" font-weight="700" text-anchor="middle">old course — silt stopped</text>
+    <text x="392" y="94" font-size="11.5" fill="var(--d-accent)" font-weight="700" text-anchor="end">tide in</text>
+    <text x="392" y="276" font-size="11.5" fill="var(--d-accent)" font-weight="700" text-anchor="end">tide out</text>
+    <text x="486" y="330" font-size="11" fill="var(--d-ink-2)" font-weight="700">sandbars</text>
+    <text x="486" y="344" font-size="11" fill="var(--d-ink-2)" font-weight="700">and inlets</text>
+  </g>
+  <g font-family="var(--d-font)" font-size="11.5" fill="var(--d-ink-2)" font-style="italic">
+    <text x="20" y="386">Twice a day the whole lagoon empties and refills through three gaps.</text>
+  </g>
+</svg>

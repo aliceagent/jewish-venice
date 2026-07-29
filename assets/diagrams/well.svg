@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" role="img"
+     aria-labelledby="wl-t wl-d" class="dgm">
+<style>
+  svg{--d-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  svg{
+    --d-sky:#f4efe4; --d-water:#cbe1e4; --d-waterline:#0e6b73; --d-sea:#a9cdd4;
+    --d-mud:#cec2ac; --d-caranto:#a3927a; --d-deep:#82735c; --d-land:#ded7c5;
+    --d-brick:#c98b6a; --d-stone:#ece5d7; --d-wood:#c69a63; --d-wood-2:#ad8452;
+    --d-pile:#bb946d; --d-sand:#e7dab9; --d-clay:#b6a28a; --d-city:#e0b98a;
+    --d-conc:#cfc7b8; --d-gate:#7d8b8f; --d-river:#3f8598; --d-stopline:#991b1b;
+    --d-line:#6b6459; --d-ink:#191713; --d-ink-2:#5c554b; --d-rule:#a49c92; --d-accent:#9a3412;
+  }
+  @media (prefers-color-scheme: dark){
+    svg{
+      --d-sky:#111a1c; --d-water:#1c3a3e; --d-waterline:#7fc4c8; --d-sea:#16302f;
+      --d-mud:#2e2822; --d-caranto:#453a2c; --d-deep:#1a1611; --d-land:#232a26;
+      --d-brick:#7a4a33; --d-stone:#3a3a36; --d-wood:#6b5133; --d-wood-2:#5a4229;
+      --d-pile:#6d5539; --d-sand:#4a412b; --d-clay:#3c342a; --d-city:#7d5f3c;
+      --d-conc:#3a3a36; --d-gate:#4a5457; --d-river:#5aa6b8; --d-stopline:#c4503f;
+      --d-line:#9a9186; --d-ink:#ece5d8; --d-ink-2:#b3aca1; --d-rule:#6f6a62; --d-accent:#e08a5f;
+    }
+  }
+</style>
+  <title id="wl-t">How a Venetian campo collected its own drinking water</title>
+  <desc id="wl-d">The square is paved in a shallow dome. Rain runs off it into stone grates at the low corners, filters down through a box of sand, and collects in a clay-lined tank sunk under the whole square. The wellhead in the middle draws from the centre of that tank. Salt lagoon water is kept out by the clay lining.</desc>
+  <defs>
+    <pattern id="sand" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" fill="var(--d-sand)"/>
+      <circle cx="2.5" cy="3" r=".9" fill="var(--d-line)" opacity=".4"/>
+      <circle cx="7" cy="7.5" r=".9" fill="var(--d-line)" opacity=".4"/>
+    </pattern>
+    <pattern id="clay" width="12" height="8" patternUnits="userSpaceOnUse">
+      <rect width="12" height="8" fill="var(--d-clay)"/>
+      <path d="M0 4h12" stroke="var(--d-line)" stroke-width="1.2" opacity=".45"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="700" height="96" fill="var(--d-sky)"/>
+  <rect x="0" y="96" width="700" height="244" fill="var(--d-mud)"/>
+
+  <!-- rain -->
+  <g stroke="var(--d-waterline)" stroke-width="2" stroke-linecap="round" opacity=".75">
+    <path d="M70 14v16M120 8v16M172 18v16M226 10v16M300 14v16M366 8v16M424 18v16M486 12v16M540 16v16"/>
+  </g>
+
+  <!-- the campo: a shallow dome, higher in the middle -->
+  <path d="M40 96q270-34 540 0z" fill="var(--d-stone)" stroke="var(--d-line)" stroke-width="1.6"/>
+  <path d="M40 96q270-34 540 0" fill="none" stroke="var(--d-line)" stroke-width="2"/>
+  <!-- runoff arrows -->
+  <g stroke="var(--d-accent)" stroke-width="2.2" fill="none" stroke-linecap="round">
+    <path d="M250 70l-58 18"/><path d="M370 70l58 18"/>
+    <path d="M192 88l8-6M192 88l1-10"/><path d="M428 88l-8-6M428 88l-1-10"/>
+  </g>
+
+  <!-- pilelle: the stone grates at the low corners -->
+  <g fill="var(--d-pile)" stroke="var(--d-line)" stroke-width="1.4">
+    <rect x="150" y="88" width="42" height="12" rx="2"/>
+    <rect x="428" y="88" width="42" height="12" rx="2"/>
+  </g>
+  <g stroke="var(--d-line)" stroke-width="1" opacity=".7">
+    <path d="M160 88v12M170 88v12M180 88v12M438 88v12M448 88v12M458 88v12"/>
+  </g>
+
+  <!-- clay tank -->
+  <path d="M96 116h428v150H96z" fill="url(#clay)" stroke="var(--d-line)" stroke-width="2"/>
+  <!-- sand fill -->
+  <rect x="112" y="132" width="396" height="118" fill="url(#sand)" stroke="var(--d-line)" stroke-width="1.2"/>
+
+  <!-- water percolating down -->
+  <g stroke="var(--d-waterline)" stroke-width="2" fill="none" stroke-linecap="round" opacity=".85">
+    <path d="M171 104v26M171 130l-4-6M171 130l4-6"/>
+    <path d="M449 104v26M449 130l-4-6M449 130l4-6"/>
+    <path d="M186 140q34 44 100 60"/><path d="M434 140q-34 44-100 60"/>
+  </g>
+
+  <!-- collected water at the base -->
+  <rect x="112" y="222" width="396" height="28" fill="var(--d-water)" opacity=".85"/>
+  <path d="M112 224q26 6 52 0t52 0 52 0 52 0 52 0 52 0 52 0 32 0"
+        fill="none" stroke="var(--d-waterline)" stroke-width="2"/>
+
+  <!-- the wellhead -->
+  <rect x="286" y="52" width="48" height="44" rx="5" fill="var(--d-stone)" stroke="var(--d-line)" stroke-width="1.8"/>
+  <ellipse cx="310" cy="52" rx="24" ry="7" fill="var(--d-stone)" stroke="var(--d-line)" stroke-width="1.8"/>
+  <ellipse cx="310" cy="52" rx="13" ry="4" fill="var(--d-deep)" stroke="var(--d-line)" stroke-width="1.2"/>
+  <!-- the shaft down the middle -->
+  <path d="M297 96v134h26V96" fill="var(--d-deep)" opacity=".5" stroke="var(--d-line)" stroke-width="1.4"/>
+
+  <rect x="528" y="0" width="172" height="340" fill="var(--d-sky)" opacity=".93"/>
+  <g font-family="var(--d-font)" font-size="12.5" fill="var(--d-ink)">
+    <g stroke="var(--d-rule)" stroke-width="1.2" fill="none">
+      <path d="M334 44h66"/><path d="M104 68L146 86"/><path d="M524 176h44"/><path d="M524 236h44"/>
+    </g>
+    <text x="404" y="41" font-weight="700">Vera da pozzo</text>
+    <text x="404" y="56" fill="var(--d-ink-2)" font-size="11">draws from the middle</text>
+    <text x="16" y="58" font-weight="700">Pilella</text>
+    <text x="16" y="73" fill="var(--d-ink-2)" font-size="11">the rain goes in here</text>
+    <text x="572" y="173" font-weight="700">Sand</text>
+    <text x="572" y="188" fill="var(--d-ink-2)" font-size="11">the filter</text>
+    <text x="572" y="233" font-weight="700">Clay lining</text>
+    <text x="572" y="248" fill="var(--d-ink-2)" font-size="11">keeps the lagoon out</text>
+    <text x="310" y="30" text-anchor="middle" font-size="12" fill="var(--d-ink-2)" font-style="italic">rain is the whole supply</text>
+  </g>
+</svg>

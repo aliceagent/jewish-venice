@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 430" role="img"
+     aria-labelledby="fnd-t fnd-d" class="dgm">
+<style>
+  svg{--d-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  svg{
+    --d-sky:#f4efe4; --d-water:#cbe1e4; --d-waterline:#0e6b73; --d-sea:#a9cdd4;
+    --d-mud:#cec2ac; --d-caranto:#a3927a; --d-deep:#82735c; --d-land:#ded7c5;
+    --d-brick:#c98b6a; --d-stone:#ece5d7; --d-wood:#c69a63; --d-wood-2:#ad8452;
+    --d-pile:#bb946d; --d-sand:#e7dab9; --d-clay:#b6a28a; --d-city:#e0b98a;
+    --d-conc:#cfc7b8; --d-gate:#7d8b8f; --d-river:#3f8598; --d-stopline:#991b1b;
+    --d-line:#6b6459; --d-ink:#191713; --d-ink-2:#5c554b; --d-rule:#a49c92; --d-accent:#9a3412;
+  }
+  @media (prefers-color-scheme: dark){
+    svg{
+      --d-sky:#111a1c; --d-water:#1c3a3e; --d-waterline:#7fc4c8; --d-sea:#16302f;
+      --d-mud:#2e2822; --d-caranto:#453a2c; --d-deep:#1a1611; --d-land:#232a26;
+      --d-brick:#7a4a33; --d-stone:#3a3a36; --d-wood:#6b5133; --d-wood-2:#5a4229;
+      --d-pile:#6d5539; --d-sand:#4a412b; --d-clay:#3c342a; --d-city:#7d5f3c;
+      --d-conc:#3a3a36; --d-gate:#4a5457; --d-river:#5aa6b8; --d-stopline:#c4503f;
+      --d-line:#9a9186; --d-ink:#ece5d8; --d-ink-2:#b3aca1; --d-rule:#6f6a62; --d-accent:#e08a5f;
+    }
+  }
+</style>
+  <title id="fnd-t">Cross-section through a Venetian building's foundation</title>
+  <desc id="fnd-d">From the top: brick wall, a damp course of Istrian stone at the waterline, two crossed layers of timber planking called zattere, and beneath them thousands of short timber piles driven through soft lagoon mud into a hard compacted clay layer called caranto.</desc>
+  <defs>
+    <pattern id="brick" width="26" height="14" patternUnits="userSpaceOnUse">
+      <rect width="26" height="14" fill="var(--d-brick)"/>
+      <path d="M0 14h26M13 0v14M0 7h26" stroke="var(--d-line)" stroke-width="1" opacity=".55"/>
+    </pattern>
+    <pattern id="mud" width="18" height="12" patternUnits="userSpaceOnUse">
+      <rect width="18" height="12" fill="var(--d-mud)"/>
+      <circle cx="4" cy="4" r="1" fill="var(--d-line)" opacity=".35"/>
+      <circle cx="12" cy="9" r="1" fill="var(--d-line)" opacity=".35"/>
+    </pattern>
+    <pattern id="caranto" width="14" height="10" patternUnits="userSpaceOnUse">
+      <rect width="14" height="10" fill="var(--d-caranto)"/>
+      <path d="M0 5h14" stroke="var(--d-line)" stroke-width="1.4" opacity=".5"/>
+    </pattern>
+  </defs>
+
+  <!-- sky / air -->
+  <rect x="0" y="0" width="790" height="150" fill="var(--d-sky)"/>
+  <!-- water -->
+  <rect x="0" y="150" width="790" height="42" fill="var(--d-water)"/>
+  <path d="M0 152q22 7 44 0t44 0 44 0 44 0 44 0 44 0 44 0 44 0 44 0 44 0 44 0 44 0 44 0 44 0"
+        fill="none" stroke="var(--d-waterline)" stroke-width="2.4"/>
+  <!-- mud -->
+  <rect x="0" y="192" width="790" height="150" fill="url(#mud)"/>
+  <!-- caranto -->
+  <rect x="0" y="342" width="790" height="60" fill="url(#caranto)"/>
+  <rect x="0" y="402" width="790" height="28" fill="var(--d-deep)"/>
+
+  <!-- building -->
+  <rect x="150" y="34" width="320" height="118" fill="url(#brick)" stroke="var(--d-line)" stroke-width="1.6"/>
+  <rect x="196" y="62" width="36" height="52" rx="18" fill="var(--d-sky)" stroke="var(--d-line)" stroke-width="1.6"/>
+  <rect x="292" y="62" width="36" height="52" rx="18" fill="var(--d-sky)" stroke="var(--d-line)" stroke-width="1.6"/>
+  <rect x="388" y="62" width="36" height="52" rx="18" fill="var(--d-sky)" stroke="var(--d-line)" stroke-width="1.6"/>
+
+  <!-- istrian stone course: the damp course, straddling the waterline -->
+  <rect x="140" y="152" width="340" height="22" fill="var(--d-stone)" stroke="var(--d-line)" stroke-width="1.6"/>
+  <path d="M197 152v22M254 152v22M311 152v22M368 152v22M425 152v22" stroke="var(--d-line)" stroke-width="1" opacity=".5"/>
+
+  <!-- zattere: two crossed layers of planking -->
+  <rect x="132" y="174" width="356" height="11" fill="var(--d-wood)" stroke="var(--d-line)" stroke-width="1.3"/>
+  <path d="M160 174v11M190 174v11M220 174v11M250 174v11M280 174v11M310 174v11M340 174v11M370 174v11M400 174v11M430 174v11M460 174v11"
+        stroke="var(--d-line)" stroke-width=".9" opacity=".55"/>
+  <rect x="132" y="185" width="356" height="11" fill="var(--d-wood-2)" stroke="var(--d-line)" stroke-width="1.3"/>
+  <path d="M132 190.5h356" stroke="var(--d-line)" stroke-width=".9" opacity=".45"/>
+
+  <!-- piles -->
+  <!-- sand packed into the gaps: part of how the ground is stiffened -->
+  <rect x="136" y="196" width="348" height="80" fill="var(--d-sand)" opacity=".5"/>
+  <g fill="var(--d-pile)" stroke="var(--d-line)" stroke-width="1.1">
+    <path d="M140 196h13l-1.4 80h-10.2z"/><path d="M167 196h13l-1.4 80h-10.2z"/>
+    <path d="M194 196h13l-1.4 80h-10.2z"/><path d="M221 196h13l-1.4 80h-10.2z"/>
+    <path d="M248 196h13l-1.4 80h-10.2z"/><path d="M275 196h13l-1.4 80h-10.2z"/>
+    <path d="M302 196h13l-1.4 80h-10.2z"/><path d="M329 196h13l-1.4 80h-10.2z"/>
+    <path d="M356 196h13l-1.4 80h-10.2z"/><path d="M383 196h13l-1.4 80h-10.2z"/>
+    <path d="M410 196h13l-1.4 80h-10.2z"/><path d="M437 196h13l-1.4 80h-10.2z"/>
+    <path d="M464 196h13l-1.4 80h-10.2z"/>
+  </g>
+  <!-- the gap the popular account forgets -->
+  <g stroke="var(--d-accent)" stroke-width="1.6" fill="none">
+    <path d="M126 278h366" stroke-dasharray="5 5"/>
+    <path d="M132 286v46M128 328l4 6 4-6M128 290l4-6 4 6"/>
+  </g>
+
+  <rect x="506" y="0" width="284" height="430" fill="var(--d-sky)" opacity=".93"/>
+  <!-- labels -->
+  <g font-family="var(--d-font)" font-size="12.5" fill="var(--d-ink)">
+    <g stroke="var(--d-rule)" stroke-width="1.2" fill="none">
+      <path d="M498 46h74"/><path d="M498 163h74"/><path d="M498 186h74"/>
+      <path d="M498 236h74"/><path d="M498 372h74"/>
+    </g>
+    <text x="576" y="43" font-weight="700">Brick and stone</text>
+    <text x="576" y="58" fill="var(--d-ink-2)" font-size="11">kept deliberately light</text>
+    <text x="576" y="160" font-weight="700">Istrian stone</text>
+    <text x="576" y="175" fill="var(--d-ink-2)" font-size="11">the damp course</text>
+    <text x="576" y="199" font-weight="700">Zatterone</text>
+    <text x="576" y="214" fill="var(--d-ink-2)" font-size="11">two crossed timber rafts</text>
+    <text x="576" y="233" font-weight="700">Piles — short</text>
+    <text x="576" y="248" fill="var(--d-ink-2)" font-size="11">they squeeze the mud tight</text>
+    <text x="576" y="369" font-weight="700">Caranto</text>
+    <text x="576" y="384" fill="var(--d-ink-2)" font-size="11">the hard layer — never reached</text>
+    <text x="16" y="128" font-weight="700">Waterline</text>
+    <text x="16" y="143" fill="var(--d-ink-2)" font-size="11">stone above it, wood below it</text>
+  </g>
+  <g font-family="var(--d-font)" font-size="11.5" fill="var(--d-ink-2)" font-style="italic">
+    <text x="16" y="215">soft mud and silt</text></g>
+  <g font-family="var(--d-font)" font-size="11" fill="var(--d-accent)" font-weight="700">
+    <text x="146" y="316">the piles stop here</text>
+  </g>
+  <g font-family="var(--d-font)" font-size="11.5" fill="var(--d-ink-2)" font-style="italic">
+    <text x="16" y="392">— no oxygen down here —</text>
+  </g>
+</svg>

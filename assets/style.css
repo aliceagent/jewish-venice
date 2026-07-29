@@ -541,3 +541,30 @@ nav.tabs button .lbl-s{display:none}
   /* the photographs are lit for a white page; take the glare off them */
   :root:not([data-theme="light"]) .history figure img{filter:brightness(.86) contrast(1.02)}
 }
+
+/* ---------- diagrams ----------
+   Hand-drawn SVG, referenced as <img> so it stays cacheable and the markup stays
+   readable. Each file carries its own token block and its own dark-mode media
+   query, because an SVG in an img cannot see the page's variables. */
+figure.diagram{
+  margin:22px 0 26px; padding:0; background:var(--card);
+  border:1px solid var(--line); border-radius:var(--r); overflow:hidden; box-shadow:var(--sh-1);
+}
+figure.diagram img{width:100%; height:auto; display:block; background:var(--paper-2)}
+figure.diagram figcaption{
+  padding:12px 16px 14px; font-size:13.6px; line-height:1.55; color:var(--ink-2);
+  border-top:1px solid var(--line-2); background:var(--paper-2);
+}
+figure.diagram figcaption b{color:var(--ink)}
+/* a number worth stopping on */
+.bignum{
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:0 14px;
+  border-left:4px solid var(--lagoon); padding:2px 0 2px 16px; margin:22px 0;
+}
+.bignum .n{font-family:var(--serif); font-size:38px; font-weight:650; line-height:1.05; color:var(--lagoon-d)}
+.bignum .t{font-size:14.6px; color:var(--ink-2); max-width:52ch}
+.bignum .t b{color:var(--ink)}
+@media (max-width:640px){
+  .bignum .n{font-size:31px}
+  figure.diagram{margin:18px 0 22px}
+}

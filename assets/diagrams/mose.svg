@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 300" role="img"
+     aria-labelledby="ms-t ms-d" class="dgm">
+<style>
+  svg{--d-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  svg{
+    --d-sky:#f4efe4; --d-water:#cbe1e4; --d-waterline:#0e6b73; --d-sea:#a9cdd4;
+    --d-mud:#cec2ac; --d-caranto:#a3927a; --d-deep:#82735c; --d-land:#ded7c5;
+    --d-brick:#c98b6a; --d-stone:#ece5d7; --d-wood:#c69a63; --d-wood-2:#ad8452;
+    --d-pile:#bb946d; --d-sand:#e7dab9; --d-clay:#b6a28a; --d-city:#e0b98a;
+    --d-conc:#cfc7b8; --d-gate:#7d8b8f; --d-river:#3f8598; --d-stopline:#991b1b;
+    --d-line:#6b6459; --d-ink:#191713; --d-ink-2:#5c554b; --d-rule:#a49c92; --d-accent:#9a3412;
+  }
+  @media (prefers-color-scheme: dark){
+    svg{
+      --d-sky:#111a1c; --d-water:#1c3a3e; --d-waterline:#7fc4c8; --d-sea:#16302f;
+      --d-mud:#2e2822; --d-caranto:#453a2c; --d-deep:#1a1611; --d-land:#232a26;
+      --d-brick:#7a4a33; --d-stone:#3a3a36; --d-wood:#6b5133; --d-wood-2:#5a4229;
+      --d-pile:#6d5539; --d-sand:#4a412b; --d-clay:#3c342a; --d-city:#7d5f3c;
+      --d-conc:#3a3a36; --d-gate:#4a5457; --d-river:#5aa6b8; --d-stopline:#c4503f;
+      --d-line:#9a9186; --d-ink:#ece5d8; --d-ink-2:#b3aca1; --d-rule:#6f6a62; --d-accent:#e08a5f;
+    }
+  }
+</style>
+  <title id="ms-t">How a MOSE gate works</title>
+  <desc id="ms-d">Each gate is a hollow steel box hinged to a concrete housing in the sea bed. At rest it lies flat, full of water, and shipping passes over it. To close the lagoon, compressed air is pumped in to force the water out, and the gate swings up on its hinge until it breaks the surface.</desc>
+
+  <!-- REST -->
+  <g>
+    <text x="20" y="18" font-family="var(--d-font)" font-size="12.5" font-weight="700" fill="var(--d-ink)">AT REST — flat on the bed, ships pass over</text>
+    <rect x="20" y="36" width="270" height="86" fill="var(--d-water)"/>
+    <path d="M20 40q22 6 45 0t45 0 45 0 45 0 45 0 45 0" fill="none" stroke="var(--d-waterline)" stroke-width="2.2"/>
+    <rect x="20" y="122" width="270" height="26" fill="var(--d-mud)"/>
+    <rect x="86" y="112" width="150" height="12" rx="2" fill="var(--d-conc)" stroke="var(--d-line)" stroke-width="1.4"/>
+    <rect x="96" y="102" width="130" height="12" rx="3" fill="var(--d-gate)" stroke="var(--d-line)" stroke-width="1.6"/>
+    <circle cx="96" cy="114" r="4.5" fill="var(--d-accent)" stroke="var(--d-line)" stroke-width="1.2"/>
+    <path d="M150 96q14-10 28 0" fill="none" stroke="var(--d-line)" stroke-width="1.2" opacity=".6"/>
+    <text x="155" y="140" font-family="var(--d-font)" font-size="11" fill="var(--d-ink-2)" text-anchor="middle">full of water</text>
+    <!-- a ship -->
+    <path d="M120 58h74l-10 14h-54z" fill="var(--d-stone)" stroke="var(--d-line)" stroke-width="1.4"/>
+    <rect x="146" y="46" width="20" height="12" fill="var(--d-stone)" stroke="var(--d-line)" stroke-width="1.2"/>
+  </g>
+
+  <!-- RAISED -->
+  <g>
+    <text x="330" y="18" font-family="var(--d-font)" font-size="12.5" font-weight="700" fill="var(--d-ink)">RAISED — air in, water out, lagoon shut</text>
+    <rect x="330" y="36" width="270" height="86" fill="var(--d-water)"/>
+    <path d="M330 40q22 6 45 0t45 0 45 0" fill="none" stroke="var(--d-waterline)" stroke-width="2.2"/>
+    <!-- higher sea on the seaward side -->
+    <rect x="466" y="28" width="134" height="94" fill="var(--d-sea)"/>
+    <path d="M466 32q22 6 45 0t45 0 45 0" fill="none" stroke="var(--d-waterline)" stroke-width="2.2"/>
+    <rect x="330" y="122" width="270" height="26" fill="var(--d-mud)"/>
+    <rect x="396" y="112" width="150" height="12" rx="2" fill="var(--d-conc)" stroke="var(--d-line)" stroke-width="1.4"/>
+    <!-- gate swung up -->
+    <path d="M406 114l96-84 9 10-96 84z" fill="var(--d-gate)" stroke="var(--d-line)" stroke-width="1.6"/>
+    <circle cx="406" cy="114" r="4.5" fill="var(--d-accent)" stroke="var(--d-line)" stroke-width="1.2"/>
+    <!-- air -->
+    <g fill="none" stroke="var(--d-accent)" stroke-width="2" stroke-linecap="round">
+      <path d="M372 138v-16M372 122l-4 5M372 122l4 5"/>
+    </g>
+    <circle cx="432" cy="92" r="3.4" fill="none" stroke="var(--d-accent)" stroke-width="1.6"/>
+    <circle cx="446" cy="78" r="2.6" fill="none" stroke="var(--d-accent)" stroke-width="1.6"/>
+    <circle cx="458" cy="66" r="3.1" fill="none" stroke="var(--d-accent)" stroke-width="1.6"/>
+    <text x="352" y="160" font-family="var(--d-font)" font-size="11" fill="var(--d-accent)" font-weight="700">compressed air</text>
+    <text x="536" y="60" font-family="var(--d-font)" font-size="11" fill="var(--d-ink-2)" text-anchor="middle">higher sea</text>
+    <text x="372" y="60" font-family="var(--d-font)" font-size="11" fill="var(--d-ink-2)" text-anchor="middle">lagoon held down</text>
+  </g>
+
+  <g font-family="var(--d-font)" font-size="11.5" fill="var(--d-ink-2)">
+    <text x="20" y="186" font-style="italic">The hinge is the whole idea: nothing stands above the water until it is needed,</text>
+    <text x="20" y="204" font-style="italic">so the inlets stay open and the lagoon keeps breathing the other 364 days.</text>
+  </g>
+</svg>
